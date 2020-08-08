@@ -1,5 +1,5 @@
 title = "My cool new Blog"
-baseURL = "https://datarchy.github.io/public/"
+baseURL = "/public/"
 theme = "bilberry-hugo-theme"
 
 # Generate the robots.txt file for SEO
