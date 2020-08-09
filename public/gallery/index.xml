@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>The Data Eng.</title>
+    <title>Data Programmers</title>
     <link>https://datarchy.github.io/public/gallery/</link>
-    <description>Recent content on The Data Eng.</description>
+    <description>Recent content on Data Programmers</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	<atom:link href="https://datarchy.github.io/public/gallery/index.xml" rel="self" type="application/rss+xml" />

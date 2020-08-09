@@ -1,22 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>The Data Eng.</title>
+    <title>Data Programmers</title>
     <link>https://datarchy.github.io/public/</link>
-    <description>Recent content on The Data Eng.</description>
+    <description>Recent content on Data Programmers</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 01 Nov 2017 13:18:45 +0100</lastBuildDate>
     
         <atom:link href="https://datarchy.github.io/public/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Duckduckgo.com</title>
-      <link>https://datarchy.github.io/public/link/duckduckgo/</link>
-      <pubDate>Tue, 01 Aug 2017 13:05:27 +0100</pubDate>
-      
-      <guid>https://datarchy.github.io/public/link/duckduckgo/</guid>
-      <description>A search engnine that respects your privacy.</description>
-    </item>
     
   </channel>
 </rss>

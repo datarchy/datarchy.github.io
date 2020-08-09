@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pages on The Data Eng.</title>
+    <title>Pages on Data Programmers</title>
     <link>https://datarchy.github.io/public/page/</link>
-    <description>Recent content in Pages on The Data Eng.</description>
+    <description>Recent content in Pages on Data Programmers</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 01 Nov 2017 13:18:45 +0100</lastBuildDate>
     
@@ -11,23 +11,16 @@
     
     
     <item>
-      <title>About Bilberry</title>
-      <link>https://datarchy.github.io/public/page/about-bilberry/</link>
+      <title>Hello !</title>
+      <link>https://datarchy.github.io/public/page/about/</link>
       <pubDate>Wed, 01 Nov 2017 13:18:45 +0100</pubDate>
       
-      <guid>https://datarchy.github.io/public/page/about-bilberry/</guid>
-      <description>Bilberry is a premium theme for the Hugo Static Website Builder.
-It is full of little nice features, such as:
- built-in integration for the wonderful algolia search built-in integration for the powerful disqus comments gravatar and custom image integration for the header keyboard shortcut for the search (press the s key, type something and hit enter or esc) responsive design - optimized for desktop and mobile devices full internationalization (i18n) support (en, de, fr, ru, es out of the box!</description>
-    </item>
-    
-    <item>
-      <title>Github</title>
-      <link>https://datarchy.github.io/public/page/github/</link>
-      <pubDate>Tue, 01 Nov 2011 13:17:56 +0100</pubDate>
-      
-      <guid>https://datarchy.github.io/public/page/github/</guid>
-      <description></description>
+      <guid>https://datarchy.github.io/public/page/about/</guid>
+      <description>Thank you for your visit,
+I&amp;rsquo;ve created this blog to keep track and share every bit of knowledge I am learning in my exciting data engineering journey.
+Please feel free to contact me at : wissem@datarchy.tech
+I would be more than happy to connect with you on linkedin : https://www.linkedin.com/in/wbelguidoum/
+See you soon!</description>
     </item>
     
   </channel>

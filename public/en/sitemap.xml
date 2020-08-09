@@ -3,16 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://datarchy.github.io/public/page/about-bilberry/</loc>
-    <lastmod>2017-11-01T13:18:45+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://datarchy.github.io/public/page/</loc>
-    <lastmod>2017-11-01T13:18:45+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://datarchy.github.io/public/</loc>
     <lastmod>2017-11-01T13:18:45+01:00</lastmod>
     <xhtml:link
@@ -28,58 +18,33 @@
   </url>
   
   <url>
-    <loc>https://datarchy.github.io/public/categories/</loc>
-    <lastmod>2017-08-01T13:05:27+01:00</lastmod>
+    <loc>https://datarchy.github.io/public/page/about/</loc>
+    <lastmod>2017-11-01T13:18:45+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://datarchy.github.io/public/fr/categories/"
+                href="https://datarchy.github.io/public/fr/page/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datarchy.github.io/public/categories/"
+                href="https://datarchy.github.io/public/page/about/"
                 />
   </url>
   
   <url>
-    <loc>https://datarchy.github.io/public/link/duckduckgo/</loc>
-    <lastmod>2017-08-01T13:05:27+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://datarchy.github.io/public/link/</loc>
-    <lastmod>2017-08-01T13:05:27+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://datarchy.github.io/public/categories/privacy/</loc>
-    <lastmod>2017-08-01T13:05:27+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://datarchy.github.io/public/tags/search-engine/</loc>
-    <lastmod>2017-08-01T13:05:27+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://datarchy.github.io/public/tags/</loc>
-    <lastmod>2017-08-01T13:05:27+01:00</lastmod>
+    <loc>https://datarchy.github.io/public/page/</loc>
+    <lastmod>2017-11-01T13:18:45+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://datarchy.github.io/public/fr/tags/"
+                href="https://datarchy.github.io/public/fr/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datarchy.github.io/public/tags/"
+                href="https://datarchy.github.io/public/page/"
                 />
-  </url>
-  
-  <url>
-    <loc>https://datarchy.github.io/public/page/github/</loc>
-    <lastmod>2011-11-01T13:17:56+01:00</lastmod>
   </url>
   
   <url>
@@ -98,6 +63,34 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://datarchy.github.io/public/author/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://datarchy.github.io/public/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://datarchy.github.io/public/fr/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://datarchy.github.io/public/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://datarchy.github.io/public/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://datarchy.github.io/public/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://datarchy.github.io/public/tags/"
                 />
   </url>
   

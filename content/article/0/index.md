@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Support & Discussion"
 date: 2099-11-01T18:10:14+01:00
 
 tags: ['Discord', 'Support', 'Say Thanks!']
