@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>search engine on The Data Eng.</title>
-    <link>https://datarchy.tech/public/tags/search-engine/</link>
+    <link>https://datarchy.github.io/public/tags/search-engine/</link>
     <description>Recent content in search engine on The Data Eng.</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 01 Aug 2017 13:05:27 +0100</lastBuildDate>
     
-	<atom:link href="https://datarchy.tech/public/tags/search-engine/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://datarchy.github.io/public/tags/search-engine/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Duckduckgo.com</title>
-      <link>https://datarchy.tech/public/link/duckduckgo/</link>
+      <link>https://datarchy.github.io/public/link/duckduckgo/</link>
       <pubDate>Tue, 01 Aug 2017 13:05:27 +0100</pubDate>
       
-      <guid>https://datarchy.tech/public/link/duckduckgo/</guid>
+      <guid>https://datarchy.github.io/public/link/duckduckgo/</guid>
       <description>A search engnine that respects your privacy.</description>
     </item>
     
