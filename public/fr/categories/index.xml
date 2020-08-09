@@ -2,67 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Data Eng.</title>
-    <link>https://datarchy.github.io/public/fr/categories/</link>
+    <link>https://datarchy.tech/public/fr/categories/</link>
     <description>Recent content in Categories on Data Eng.</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 Dec 2017 14:40:32 +0100</lastBuildDate>
     
-	<atom:link href="https://datarchy.github.io/public/fr/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://datarchy.tech/public/fr/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Zitate</title>
-      <link>https://datarchy.github.io/public/fr/categories/zitate/</link>
-      <pubDate>Fri, 01 Dec 2017 14:40:32 +0100</pubDate>
-      
-      <guid>https://datarchy.github.io/public/fr/categories/zitate/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Reise</title>
-      <link>https://datarchy.github.io/public/fr/categories/reise/</link>
-      <pubDate>Wed, 01 Nov 2017 18:01:26 +0100</pubDate>
-      
-      <guid>https://datarchy.github.io/public/fr/categories/reise/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Urlaub</title>
-      <link>https://datarchy.github.io/public/fr/categories/urlaub/</link>
-      <pubDate>Wed, 01 Nov 2017 18:01:26 +0100</pubDate>
-      
-      <guid>https://datarchy.github.io/public/fr/categories/urlaub/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Musik</title>
-      <link>https://datarchy.github.io/public/fr/categories/musik/</link>
-      <pubDate>Wed, 01 Nov 2017 16:23:40 +0100</pubDate>
-      
-      <guid>https://datarchy.github.io/public/fr/categories/musik/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Politik</title>
-      <link>https://datarchy.github.io/public/fr/categories/politik/</link>
-      <pubDate>Wed, 01 Nov 2017 16:23:40 +0100</pubDate>
-      
-      <guid>https://datarchy.github.io/public/fr/categories/politik/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Video</title>
-      <link>https://datarchy.github.io/public/fr/categories/video/</link>
-      <pubDate>Wed, 01 Nov 2017 16:23:40 +0100</pubDate>
-      
-      <guid>https://datarchy.github.io/public/fr/categories/video/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>
