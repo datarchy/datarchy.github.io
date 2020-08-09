@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Author on D A T A R C H Y</title>
-    <link>/public/author/</link>
-    <description>Recent content in Author on D A T A R C H Y</description>
+    <title>Author on The Data Eng.</title>
+    <link>https://datarchy.github.io/public/author/</link>
+    <description>Recent content in Author on The Data Eng.</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 01 Nov 2017 18:10:14 +0100</lastBuildDate>
     
-	<atom:link href="/public/author/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://datarchy.github.io/public/author/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Lednerb</title>
-      <link>/public/author/lednerb/</link>
+      <link>https://datarchy.github.io/public/author/lednerb/</link>
       <pubDate>Wed, 01 Nov 2017 18:10:14 +0100</pubDate>
       
-      <guid>/public/author/lednerb/</guid>
+      <guid>https://datarchy.github.io/public/author/lednerb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Edward Snowden</title>
-      <link>/public/author/edward-snowden/</link>
+      <link>https://datarchy.github.io/public/author/edward-snowden/</link>
       <pubDate>Wed, 01 Nov 2017 13:01:14 +0100</pubDate>
       
-      <guid>/public/author/edward-snowden/</guid>
+      <guid>https://datarchy.github.io/public/author/edward-snowden/</guid>
       <description></description>
     </item>
     

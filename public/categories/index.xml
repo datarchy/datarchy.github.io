@@ -1,93 +1,93 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on D A T A R C H Y</title>
-    <link>/public/categories/</link>
-    <description>Recent content in Categories on D A T A R C H Y</description>
+    <title>Categories on The Data Eng.</title>
+    <link>https://datarchy.github.io/public/categories/</link>
+    <description>Recent content in Categories on The Data Eng.</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 01 Nov 2017 18:01:26 +0100</lastBuildDate>
     
-	<atom:link href="/public/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://datarchy.github.io/public/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Holidays</title>
-      <link>/public/categories/holidays/</link>
+      <link>https://datarchy.github.io/public/categories/holidays/</link>
       <pubDate>Wed, 01 Nov 2017 18:01:26 +0100</pubDate>
       
-      <guid>/public/categories/holidays/</guid>
+      <guid>https://datarchy.github.io/public/categories/holidays/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Travelling</title>
-      <link>/public/categories/travelling/</link>
+      <link>https://datarchy.github.io/public/categories/travelling/</link>
       <pubDate>Wed, 01 Nov 2017 18:01:26 +0100</pubDate>
       
-      <guid>/public/categories/travelling/</guid>
+      <guid>https://datarchy.github.io/public/categories/travelling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Music</title>
-      <link>/public/categories/music/</link>
+      <link>https://datarchy.github.io/public/categories/music/</link>
       <pubDate>Wed, 01 Nov 2017 16:23:40 +0100</pubDate>
       
-      <guid>/public/categories/music/</guid>
+      <guid>https://datarchy.github.io/public/categories/music/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Politics</title>
-      <link>/public/categories/politics/</link>
+      <link>https://datarchy.github.io/public/categories/politics/</link>
       <pubDate>Wed, 01 Nov 2017 16:23:40 +0100</pubDate>
       
-      <guid>/public/categories/politics/</guid>
+      <guid>https://datarchy.github.io/public/categories/politics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Video</title>
-      <link>/public/categories/video/</link>
+      <link>https://datarchy.github.io/public/categories/video/</link>
       <pubDate>Wed, 01 Nov 2017 16:23:40 +0100</pubDate>
       
-      <guid>/public/categories/video/</guid>
+      <guid>https://datarchy.github.io/public/categories/video/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Privacy</title>
-      <link>/public/categories/privacy/</link>
+      <link>https://datarchy.github.io/public/categories/privacy/</link>
       <pubDate>Wed, 01 Nov 2017 13:05:27 +0100</pubDate>
       
-      <guid>/public/categories/privacy/</guid>
+      <guid>https://datarchy.github.io/public/categories/privacy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Society</title>
-      <link>/public/categories/society/</link>
+      <link>https://datarchy.github.io/public/categories/society/</link>
       <pubDate>Wed, 01 Nov 2017 13:01:14 +0100</pubDate>
       
-      <guid>/public/categories/society/</guid>
+      <guid>https://datarchy.github.io/public/categories/society/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code</title>
-      <link>/public/categories/code/</link>
+      <link>https://datarchy.github.io/public/categories/code/</link>
       <pubDate>Wed, 01 Nov 2017 09:31:27 +0100</pubDate>
       
-      <guid>/public/categories/code/</guid>
+      <guid>https://datarchy.github.io/public/categories/code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tutorials</title>
-      <link>/public/categories/tutorials/</link>
+      <link>https://datarchy.github.io/public/categories/tutorials/</link>
       <pubDate>Wed, 01 Nov 2017 09:31:27 +0100</pubDate>
       
-      <guid>/public/categories/tutorials/</guid>
+      <guid>https://datarchy.github.io/public/categories/tutorials/</guid>
       <description></description>
     </item>
     

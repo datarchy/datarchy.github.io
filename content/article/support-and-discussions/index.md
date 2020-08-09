@@ -1,10 +1,10 @@
 ---
-title: "Support and Discussions"
-date: 2017-11-01T18:10:14+01:00
+title: ""
+date: 2099-11-01T18:10:14+01:00
 
 tags: ['Discord', 'Support', 'Say Thanks!']
 author: "Lednerb"
-noSummary: true
+noSummary: false
 
 resizeImages: false
 ---

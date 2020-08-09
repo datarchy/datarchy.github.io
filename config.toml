@@ -1,5 +1,5 @@
-title = "D A T A R C H Y"
-baseURL = "/public/"
+title = "The Data Eng."
+baseURL = "https://datarchy.tech/public"
 theme = "bilberry-hugo-theme"
 
 # Generate the robots.txt file for SEO
@@ -12,7 +12,7 @@ DefaultContentLanguage = "en"
 googleAnalytics = ""
 
 # Enable / Disable comments on the articles via Disqus.
-disqusShortname = ""
+disqusShortname = "sss"
 
 # Enable / Disable open link with a new tab.
 [blackfriday]
@@ -23,7 +23,7 @@ disqusShortname = ""
   # Files are relative to the static/ directory or a URL.
   # Files are imported in the order they appear here, after
   # theme.css and theme.js, respectively.
-  css_modules = []
+  css_modules = ["datarchy.css"]
   js_modules = []
 
   # Description and meta data for the search engines
@@ -46,7 +46,7 @@ disqusShortname = ""
     algolia_currentLanguageOnly = true
 
   # Enable / Disable comments on the articles via commento
-  commentoJsURL = "https://commento.lednerb.de/js/commento.js"
+  #commentoJsURL = "https://commento.lednerb.de/js/commento.js"
 
   # Media configuration
     # let hugo automatically resize and crop your images to the correct sizes
@@ -56,13 +56,13 @@ disqusShortname = ""
 
   # Header configuration
     # your subtitle if you want to use any
-    subtitle = "The Age Of Data"
+    subtitle = "Data Solutions, Technologies, and Use Cases"
 
     # if you want to use gravatar for the header image
     #gravatarEMail = "code@lednerb.de"
 
     # set an path to the image file you want to use | overwrites gravatar
-    customImage = ""
+    customImage = "Transparent_800x800_72dpi.png"
 
     # define the icon you want to use for the overlay for the customImage or gravatar.
     overlayIcon = "fa-home"
@@ -115,8 +115,8 @@ disqusShortname = ""
     # all icons https://fontawesome.com/icons?d=gallery&m=free
     # brand icons https://fontawesome.com/icons?d=gallery&s=brands&m=free
     socialMediaLinks = [
-      { link = "https://twitter.com/TheRealLednerb", icon = "fab fa-twitter" },
-      { link = "https://github.com/Lednerb", icon = "fab fa-github" },
+      { link = "https://www.linkedin.com/company/datarchy", icon = "fab fa-linkedin" },
+      { link = "https://github.com/datarchy", icon = "fab fa-github" },
     ]
 
     # credits line configuration
@@ -133,10 +133,10 @@ disqusShortname = ""
 [Languages]
   [Languages.en]
     weight = 1
-  [Languages.de]
+  [Languages.fr]
     weight = 2
-    title = "Mein cooler neuer Blog"
-    subtitle = "Hallo Welt! Dies ist der epischste Untertitel aller Zeiten."
+    title = "Data Eng."
+    subtitle = "Apprenons la data ensemble"
 
 # don't change anything below
 [taxonomies]

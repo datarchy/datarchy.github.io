@@ -1,120 +1,120 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on D A T A R C H Y</title>
-    <link>/public/tags/</link>
-    <description>Recent content in Tags on D A T A R C H Y</description>
+    <title>Tags on The Data Eng.</title>
+    <link>https://datarchy.github.io/public/tags/</link>
+    <description>Recent content in Tags on The Data Eng.</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 01 Nov 2017 18:10:14 +0100</lastBuildDate>
     
-	<atom:link href="/public/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://datarchy.github.io/public/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Discord</title>
-      <link>/public/tags/discord/</link>
+      <link>https://datarchy.github.io/public/tags/discord/</link>
       <pubDate>Wed, 01 Nov 2017 18:10:14 +0100</pubDate>
       
-      <guid>/public/tags/discord/</guid>
+      <guid>https://datarchy.github.io/public/tags/discord/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Say Thanks!</title>
-      <link>/public/tags/say-thanks/</link>
+      <link>https://datarchy.github.io/public/tags/say-thanks/</link>
       <pubDate>Wed, 01 Nov 2017 18:10:14 +0100</pubDate>
       
-      <guid>/public/tags/say-thanks/</guid>
+      <guid>https://datarchy.github.io/public/tags/say-thanks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Support</title>
-      <link>/public/tags/support/</link>
+      <link>https://datarchy.github.io/public/tags/support/</link>
       <pubDate>Wed, 01 Nov 2017 18:10:14 +0100</pubDate>
       
-      <guid>/public/tags/support/</guid>
+      <guid>https://datarchy.github.io/public/tags/support/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Eilean Donan Castle</title>
-      <link>/public/tags/eilean-donan-castle/</link>
+      <link>https://datarchy.github.io/public/tags/eilean-donan-castle/</link>
       <pubDate>Wed, 01 Nov 2017 18:01:26 +0100</pubDate>
       
-      <guid>/public/tags/eilean-donan-castle/</guid>
+      <guid>https://datarchy.github.io/public/tags/eilean-donan-castle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Glennfinnan Viaduct</title>
-      <link>/public/tags/glennfinnan-viaduct/</link>
+      <link>https://datarchy.github.io/public/tags/glennfinnan-viaduct/</link>
       <pubDate>Wed, 01 Nov 2017 18:01:26 +0100</pubDate>
       
-      <guid>/public/tags/glennfinnan-viaduct/</guid>
+      <guid>https://datarchy.github.io/public/tags/glennfinnan-viaduct/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Scotland</title>
-      <link>/public/tags/scotland/</link>
+      <link>https://datarchy.github.io/public/tags/scotland/</link>
       <pubDate>Wed, 01 Nov 2017 18:01:26 +0100</pubDate>
       
-      <guid>/public/tags/scotland/</guid>
+      <guid>https://datarchy.github.io/public/tags/scotland/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kilez More</title>
-      <link>/public/tags/kilez-more/</link>
+      <link>https://datarchy.github.io/public/tags/kilez-more/</link>
       <pubDate>Wed, 01 Nov 2017 16:23:40 +0100</pubDate>
       
-      <guid>/public/tags/kilez-more/</guid>
+      <guid>https://datarchy.github.io/public/tags/kilez-more/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Truth Rap</title>
-      <link>/public/tags/truth-rap/</link>
+      <link>https://datarchy.github.io/public/tags/truth-rap/</link>
       <pubDate>Wed, 01 Nov 2017 16:12:47 +0100</pubDate>
       
-      <guid>/public/tags/truth-rap/</guid>
+      <guid>https://datarchy.github.io/public/tags/truth-rap/</guid>
       <description></description>
     </item>
     
     <item>
       <title>search engine</title>
-      <link>/public/tags/search-engine/</link>
+      <link>https://datarchy.github.io/public/tags/search-engine/</link>
       <pubDate>Wed, 01 Nov 2017 13:05:27 +0100</pubDate>
       
-      <guid>/public/tags/search-engine/</guid>
+      <guid>https://datarchy.github.io/public/tags/search-engine/</guid>
       <description></description>
     </item>
     
     <item>
       <title>free speech</title>
-      <link>/public/tags/free-speech/</link>
+      <link>https://datarchy.github.io/public/tags/free-speech/</link>
       <pubDate>Wed, 01 Nov 2017 13:01:14 +0100</pubDate>
       
-      <guid>/public/tags/free-speech/</guid>
+      <guid>https://datarchy.github.io/public/tags/free-speech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bilberry Theme</title>
-      <link>/public/tags/bilberry-theme/</link>
+      <link>https://datarchy.github.io/public/tags/bilberry-theme/</link>
       <pubDate>Wed, 01 Nov 2017 09:31:27 +0100</pubDate>
       
-      <guid>/public/tags/bilberry-theme/</guid>
+      <guid>https://datarchy.github.io/public/tags/bilberry-theme/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hugo</title>
-      <link>/public/tags/hugo/</link>
+      <link>https://datarchy.github.io/public/tags/hugo/</link>
       <pubDate>Wed, 01 Nov 2017 09:31:27 +0100</pubDate>
       
-      <guid>/public/tags/hugo/</guid>
+      <guid>https://datarchy.github.io/public/tags/hugo/</guid>
       <description></description>
     </item>
     
