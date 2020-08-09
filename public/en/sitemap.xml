@@ -3,94 +3,94 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://datarchy.github.io/public/</loc>
+    <loc>https://www.datarchy.tech/public/</loc>
     <lastmod>2017-11-01T13:18:45+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://datarchy.github.io/public/fr/"
+                href="https://www.datarchy.tech/public/fr/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datarchy.github.io/public/"
+                href="https://www.datarchy.tech/public/"
                 />
   </url>
   
   <url>
-    <loc>https://datarchy.github.io/public/page/about/</loc>
+    <loc>https://www.datarchy.tech/public/page/about/</loc>
     <lastmod>2017-11-01T13:18:45+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://datarchy.github.io/public/fr/page/about/"
+                href="https://www.datarchy.tech/public/fr/page/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datarchy.github.io/public/page/about/"
+                href="https://www.datarchy.tech/public/page/about/"
                 />
   </url>
   
   <url>
-    <loc>https://datarchy.github.io/public/page/</loc>
+    <loc>https://www.datarchy.tech/public/page/</loc>
     <lastmod>2017-11-01T13:18:45+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://datarchy.github.io/public/fr/page/"
+                href="https://www.datarchy.tech/public/fr/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datarchy.github.io/public/page/"
+                href="https://www.datarchy.tech/public/page/"
                 />
   </url>
   
   <url>
-    <loc>https://datarchy.github.io/public/gallery/</loc>
+    <loc>https://www.datarchy.tech/public/gallery/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://datarchy.github.io/public/author/</loc>
+    <loc>https://www.datarchy.tech/public/author/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://datarchy.github.io/public/fr/author/"
+                href="https://www.datarchy.tech/public/fr/author/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datarchy.github.io/public/author/"
+                href="https://www.datarchy.tech/public/author/"
                 />
   </url>
   
   <url>
-    <loc>https://datarchy.github.io/public/categories/</loc>
+    <loc>https://www.datarchy.tech/public/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://datarchy.github.io/public/fr/categories/"
+                href="https://www.datarchy.tech/public/fr/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datarchy.github.io/public/categories/"
+                href="https://www.datarchy.tech/public/categories/"
                 />
   </url>
   
   <url>
-    <loc>https://datarchy.github.io/public/tags/</loc>
+    <loc>https://www.datarchy.tech/public/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://datarchy.github.io/public/fr/tags/"
+                href="https://www.datarchy.tech/public/fr/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://datarchy.github.io/public/tags/"
+                href="https://www.datarchy.tech/public/tags/"
                 />
   </url>
   
