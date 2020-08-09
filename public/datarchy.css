@@ -54,16 +54,15 @@
   font-size: 165px;
   font-weight: 700;
   margin: 0px;
-  color: #444444;
+  color: #64ccec;
   text-transform: uppercase;
 }
 
 .notfound .notfound-404 h1>span {
-  color: #64ccec;
+  color: #ff914d;
 }
 
 .notfound h2 {
-  font-family: 'Roboto', sans-serif;
   font-size: 22px;
   font-weight: 400;
   text-transform: uppercase;
