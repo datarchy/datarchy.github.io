@@ -1,0 +1,23 @@
+.bilberry-hugo-theme header {
+	background-color : #ffffff;
+	color : #444444;
+}
+
+.bilberry-hugo-theme header .languages {
+	background-color : #f1f1f1;
+}
+
+.bilberry-hugo-theme header .languages a {
+	color: #444444;
+}
+
+.bilberry-hugo-theme header .toggler {
+	background-color : #64ccec;
+	color: #f1f1f1;
+}
+
+.bilberry-hugo-theme nav {
+	background-color : #64ccec;
+	color: #f1f1f1;
+	font-style: bold;
+}

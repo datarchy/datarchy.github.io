@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zitate on Data Eng.</title>
+    <link>https://datarchy.github.io/public/fr/categories/zitate/</link>
+    <description>Recent content in Zitate on Data Eng.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 01 Dec 2017 14:40:32 +0100</lastBuildDate>
+    
+	<atom:link href="https://datarchy.github.io/public/fr/categories/zitate/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Albert Einstein - Sinn Des Lebens</title>
+      <link>https://datarchy.github.io/public/fr/quote/einstein-sinn-des-lebens/</link>
+      <pubDate>Fri, 01 Dec 2017 14:40:32 +0100</pubDate>
+      
+      <guid>https://datarchy.github.io/public/fr/quote/einstein-sinn-des-lebens/</guid>
+      <description>Der Sinn des Lebens besteht nicht darin ein erfolgreicher Mensch zu sein, sondern ein wertvoller.</description>
+    </item>
+    
+  </channel>
+</rss>
