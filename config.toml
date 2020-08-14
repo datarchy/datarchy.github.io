@@ -13,7 +13,7 @@ DefaultContentLanguage = "en"
 googleAnalytics = "UA-175071430-1"
 
 # Enable / Disable comments on the articles via Disqus.
-disqusShortname = "datarchy"
+#disqusShortname = "datarchy"
 
 # Enable / Disable open link with a new tab.
 [blackfriday]
