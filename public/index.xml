@@ -4,10 +4,19 @@
     <link>https://www.datarchy.tech/public/</link>
     <description>Recent content on Data Programmers</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 01 Nov 2017 13:18:45 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2020 00:00:00 +0100</lastBuildDate>
     
         <atom:link href="https://www.datarchy.tech/public/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mark Twin</title>
+      <link>https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/</link>
+      <pubDate>Thu, 13 Aug 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/</guid>
+      <description>“The secret to getting ahead is getting started.”</description>
+    </item>
     
   </channel>
 </rss>

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Quotes on The Data Eng.</title>
-    <link>https://datarchy.github.io/public/quote/</link>
-    <description>Recent content in Quotes on The Data Eng.</description>
+    <title>Quotes on Data Programmers</title>
+    <link>https://www.datarchy.tech/public/quote/</link>
+    <description>Recent content in Quotes on Data Programmers</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 01 Nov 2017 13:01:14 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2020 00:00:00 +0100</lastBuildDate>
     
-	<atom:link href="https://datarchy.github.io/public/quote/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.datarchy.tech/public/quote/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Edward Snowden About Privacy</title>
-      <link>https://datarchy.github.io/public/quote/edward-snowden-privacy/</link>
-      <pubDate>Wed, 01 Nov 2017 13:01:14 +0100</pubDate>
+      <title>Mark Twin</title>
+      <link>https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/</link>
+      <pubDate>Thu, 13 Aug 2020 00:00:00 +0100</pubDate>
       
-      <guid>https://datarchy.github.io/public/quote/edward-snowden-privacy/</guid>
-      <description>Arguing that you don&amp;rsquo;t care about the right to privacy because you have nothing to hide is no different than saying you don&amp;rsquo;t care about free speech because you have nothing to say.</description>
+      <guid>https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/</guid>
+      <description>“The secret to getting ahead is getting started.”</description>
     </item>
     
   </channel>

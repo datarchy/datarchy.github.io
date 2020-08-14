@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Motivation on Data Programmers</title>
+    <link>https://www.datarchy.tech/public/categories/motivation/</link>
+    <description>Recent content in Motivation on Data Programmers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 13 Aug 2020 00:00:00 +0100</lastBuildDate>
+    
+	<atom:link href="https://www.datarchy.tech/public/categories/motivation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mark Twin</title>
+      <link>https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/</link>
+      <pubDate>Thu, 13 Aug 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/</guid>
+      <description>“The secret to getting ahead is getting started.”</description>
+    </item>
+    
+  </channel>
+</rss>

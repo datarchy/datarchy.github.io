@@ -3,8 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.datarchy.tech/public/author/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/public/fr/author/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/public/author/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/categories/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/public/fr/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/public/categories/"
+                />
+  </url>
+  
+  <url>
     <loc>https://www.datarchy.tech/public/</loc>
-    <lastmod>2017-11-01T13:18:45+01:00</lastmod>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -14,6 +44,96 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://www.datarchy.tech/public/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/author/mark-twain/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/public/fr/author/mark-twain/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/public/author/mark-twain/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/public/fr/quote/20200814_mark_twin_getting_started/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/categories/motivation/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/public/fr/categories/motivation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/public/categories/motivation/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/quote/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/public/fr/quote/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/public/quote/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/tags/start-now/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/public/fr/tags/start-now/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/public/tags/start-now/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/tags/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/public/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/public/tags/"
                 />
   </url>
   
@@ -50,48 +170,6 @@
   <url>
     <loc>https://www.datarchy.tech/public/gallery/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.datarchy.tech/public/author/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.datarchy.tech/public/fr/author/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.datarchy.tech/public/author/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://www.datarchy.tech/public/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.datarchy.tech/public/fr/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.datarchy.tech/public/categories/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://www.datarchy.tech/public/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.datarchy.tech/public/fr/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.datarchy.tech/public/tags/"
-                />
   </url>
   
 </urlset>
