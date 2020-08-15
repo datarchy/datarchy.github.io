@@ -58,7 +58,7 @@ val countByPartition2 = df.groupBy(spark_partition_id())
 ```
 
 * ```spark_partition_id()``` is a non deterministic function that returns a Column expression that generates for each row the ID of its corresponding partition.
-* We group the dataframe by this column, and apply a count agregation, which gives a new dataframe with two columns : Partition ID + Count of rows.
+* We group the DataFrame by this column, and apply a count aggregation, which gives a new dataframe with two columns : Partition ID + Count of rows.
 
 
 ```
