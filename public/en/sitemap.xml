@@ -3,8 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.datarchy.tech/public/article/</loc>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.datarchy.tech/public/author/</loc>
-    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -15,6 +20,56 @@
                 hreflang="en"
                 href="https://www.datarchy.tech/public/author/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/</loc>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/public/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/public/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/tags/dataframe/</loc>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/tags/spark/</loc>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/</loc>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/tags/</loc>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/public/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/public/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/public/author/wissem-belguidoum/</loc>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
   </url>
   
   <url>
@@ -29,21 +84,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://www.datarchy.tech/public/categories/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://www.datarchy.tech/public/</loc>
-    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.datarchy.tech/public/fr/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.datarchy.tech/public/"
                 />
   </url>
   
@@ -119,21 +159,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://www.datarchy.tech/public/tags/start-now/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://www.datarchy.tech/public/tags/</loc>
-    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://www.datarchy.tech/public/fr/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.datarchy.tech/public/tags/"
                 />
   </url>
   

@@ -1,12 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Programmers</title>
-    <link>https://www.datarchy.tech/public/</link>
-    <description>Recent content on Data Programmers</description>
+    <title>Spark on Data Programmers</title>
+    <link>https://www.datarchy.tech/public/tags/spark/</link>
+    <description>Recent content in Spark on Data Programmers</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 15 Aug 2020 00:00:00 +0100</lastBuildDate>
     
-        <atom:link href="https://www.datarchy.tech/public/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.datarchy.tech/public/tags/spark/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,15 +20,6 @@
   The first and the more straightforward way is using Dataframe.mapPartitions().
   The second way is using the spark_partition_id() function, followed by a grouping count aggregation.
   Let&amp;rsquo;s first load the data into a dataframe I have used the SF Bay Area Bike data source, that can be found here</description>
-    </item>
-    
-    <item>
-      <title>Mark Twin</title>
-      <link>https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/</link>
-      <pubDate>Thu, 13 Aug 2020 00:00:00 +0100</pubDate>
-      
-      <guid>https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/</guid>
-      <description>“The secret to getting ahead is getting started.”</description>
     </item>
     
   </channel>
