@@ -170,9 +170,9 @@
     </div>
 
     
-        Sometimes, we are required to compute the number of rows per each partition of a Spark DataFrame. In order to achieve this, there are two different ways :
-  The first and the more straightforward way is using Dataframe.mapPartitions().
-  The second way is using the spark_partition_id() function, followed by a grouping count aggregation.
+        Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways :
+  The first way is using Dataframe.mapPartitions().
+  The second way (the faster according to my observations) is using the spark_partition_id() function, followed by a grouping count aggregation.
   Let&rsquo;s first load the data into a dataframe I have used the SF Bay Area Bike data source, that can be found here
 
         

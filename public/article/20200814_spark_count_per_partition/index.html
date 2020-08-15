@@ -163,20 +163,20 @@
     </div>
 
     
-        <p>Sometimes, we are required to compute the number of rows per each partition of a Spark DataFrame. In order to achieve this, there are two different ways :</p>
+        <p>Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways :</p>
 <ul>
 <li>
-<p>The first and the more straightforward way is using <code>Dataframe.mapPartitions()</code>.</p>
+<p>The first way is using <code>Dataframe.mapPartitions()</code>.</p>
 </li>
 <li>
-<p>The second way is using the <code>spark_partition_id()</code> function, followed by a grouping count aggregation.</p>
+<p>The second way (the faster according to my observations) is using the <code>spark_partition_id()</code> function, followed by a grouping count aggregation.</p>
 </li>
 </ul>
-<h1 id="lets-first-load-the-data-into-a-dataframe">Let&rsquo;s first load the data into a dataframe</h1>
+<h2 id="lets-first-load-the-data-into-a-dataframe">Let&rsquo;s first load the data into a dataframe</h2>
 <p><em>I have used the SF Bay Area Bike data source, that can be found <a href="https://www.kaggle.com/benhamner/sf-bay-area-bike-share/data#"><strong>here</strong></a></em></p>
 <p>Scala :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df <span style="color:#66d9ef">=</span> spark<span style="color:#f92672">.</span>read<span style="color:#f92672">.</span>csv<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;file:///.../status.csv&#34;</span><span style="color:#f92672">)</span>
-</code></pre></div><h1 id="method-1--using-mappartitions">Method 1 : using mapPartitions()</h1>
+</code></pre></div><h2 id="method-1--using-mappartitions">Method 1 : using mapPartitions()</h2>
 <p>Scala :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> countByPartition1 <span style="color:#66d9ef">=</span> 
        df<span style="color:#f92672">.</span>mapPartitions<span style="color:#f92672">(</span>iter <span style="color:#66d9ef">=&gt;</span> <span style="color:#a6e22e">Array</span><span style="color:#f92672">(</span>iter<span style="color:#f92672">.</span>size<span style="color:#f92672">).</span>iterator<span style="color:#f92672">)</span>
@@ -194,7 +194,7 @@
 </ul>
 <p>The final result will be an array that contains the size of each partition :</p>
 <pre><code>countByPartition1: Array[Int] = Array(4949155, 4863123, 4796844, 4910927, 4864103, 4848557, 4790660, 4985291, 4858505, 4853698, 4874157, 4814367, 4805210, 4790091, 3979746)
-</code></pre><h1 id="method-2--using-spark_partition_id">Method 2 : using spark_partition_id()</h1>
+</code></pre><h2 id="method-2--using-spark_partition_id">Method 2 : using spark_partition_id()</h2>
 <p>Scala :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> countByPartition2 <span style="color:#66d9ef">=</span> df<span style="color:#f92672">.</span>groupBy<span style="color:#f92672">(</span>spark_partition_id<span style="color:#f92672">())</span>
                           <span style="color:#f92672">.</span>count<span style="color:#f92672">()</span>
@@ -203,7 +203,7 @@
 <li><code>spark_partition_id()</code> is a non deterministic function that returns a Column containing for each row the index of its corresponding partition.</li>
 </ul>
 <pre><code>countByPartition2: Array[org.apache.spark.sql.Row] = Array([12,4805210], [1,4863123], [13,4790091], [6,4790660], [3,4910927], [5,4848557], [9,4853698], [4,4864103], [8,4858505], [7,4985291], [10,4874157], [11,4814367], [14,3979746], [2,4796844], [0,4949155])
-</code></pre><h1 id="conclusion-">Conclusion :</h1>
+</code></pre><h2 id="conclusion-">Conclusion :</h2>
 <p>You can use either way to compute the number of rows per partition.
 However, I&rsquo;ve noticed that the second method can be up to 5 times faster than the first method.</p>
 
