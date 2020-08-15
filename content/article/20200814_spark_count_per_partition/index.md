@@ -42,7 +42,7 @@ val countByPartition1 =
 
 * Our lambda function is returning a single element iterator that contains the size of the input iterator (which is the number of rows in the partition). 
 
-The final result will be an array that contains the size of each partition :  
+The final result will be an array that contains the size of each partition, where the index of the array is the partition ID :  
    
 ```
 countByPartition1: Array[Int] = Array(4949155, 4863123, 4796844, 4910927, 4864103, 4848557, 4790660, 4985291, 4858505, 4853698, 4874157, 4814367, 4805210, 4790091, 3979746)
@@ -57,7 +57,9 @@ val countByPartition2 = df.groupBy(spark_partition_id())
                           .collect() 
 ```
 
-* ```spark_partition_id()``` is a non deterministic function that returns a Column containing for each row the index of its corresponding partition.
+* ```spark_partition_id()``` is a non deterministic function that returns a Column expression that generates for each row the ID of its corresponding partition.
+* We group the dataframe by this column, and apply a count agregation, which gives a new dataframe with two columns : Partition ID + Count of rows.
+
 
 ```
 countByPartition2: Array[org.apache.spark.sql.Row] = Array([12,4805210], [1,4863123], [13,4790091], [6,4790660], [3,4910927], [5,4848557], [9,4853698], [4,4864103], [8,4858505], [7,4985291], [10,4874157], [11,4814367], [14,3979746], [2,4796844], [0,4949155])
