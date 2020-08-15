@@ -201,7 +201,7 @@
                           <span style="color:#f92672">.</span>collect<span style="color:#f92672">()</span> 
 </code></pre></div><ul>
 <li><code>spark_partition_id()</code> is a non deterministic function that returns a Column expression that generates for each row the ID of its corresponding partition.</li>
-<li>We group the DataFrame by this column, and apply a count aggregation, which gives a new dataframe with two columns : Partition ID + Count of rows.</li>
+<li>We group the dataframe by this column, and apply a count aggregation, which gives a new dataframe with two columns : Partition ID + Count of rows.</li>
 </ul>
 <pre><code>countByPartition2: Array[org.apache.spark.sql.Row] = Array([12,4805210], [1,4863123], [13,4790091], [6,4790660], [3,4910927], [5,4848557], [9,4853698], [4,4864103], [8,4858505], [7,4985291], [10,4874157], [11,4814367], [14,3979746], [2,4796844], [0,4949155])
 </code></pre><h2 id="conclusion-">Conclusion :</h2>
