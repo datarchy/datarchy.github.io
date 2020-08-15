@@ -38,7 +38,7 @@ val countByPartition1 =
 
 * ```DataFrame.mapPartitions``` : takes as parameter a lambda function that takes an iterator, and returns another iterator. 
 
-* It will create for each partition an iterator and will then passes it to the lambda function and finally will return a dataset that combines the results of the lambda function. 
+* It will create for each partition an iterator and will then pass it to the lambda function and finally will return a dataset that combines the results of the lambda function. 
 
 * Our lambda function is returning a single element iterator that contains the size of the input iterator (which is the number of rows in the partition). 
 
