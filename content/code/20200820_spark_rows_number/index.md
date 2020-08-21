@@ -378,4 +378,4 @@ The numbers talk for themselves:
 Unsurprisingly, the first method does not scale, and the processing time adds up due to the sequential execution. Here's a chart with the same data: 
  ![](chart.png)
 
-Thank you for reading this tutorial.. Please don’t hesitate to share your insight in the comment section:) 
+Thank you for reading this tutorial.. Please don’t hesitate to share your insight in the comment section :) 
