@@ -292,7 +292,7 @@ val partitions_offset = partitions_size.withColumn("partition_offset", sum("part
 |           5|           240|            1256|
 +------------+--------------+----------------+
 ```
-* `rowsBetween`: in the last section we have seen that a window specification answered two questions: how to partition the data and how to order the data. There is a third question that can be answered: how to frame the data i.e, which rows will be aggregated together in to compute the current row? 
+* `rowsBetween`: in the last section we have seen that a window specification answered two questions: how to partition the data and how to order the data. There is a third question that can be answered: how to frame the data i.e, which rows will be aggregated together in order to compute the current row? 
 * In our case, we used `rowsBetween(Window.unboundedPreceding, -1)` to indicate that for the current row, we need to aggregate all the preceding rows.
 * `orderBy`: this we have already seen, it will define how to order the rows.
 
