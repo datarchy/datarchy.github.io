@@ -1,5 +1,5 @@
 ---
-title: "Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe?"
+title: "Spark Dataframe: How to row numbers to a dataframe?"
 date: 2020-08-20T00:00:00+01:00
 tags: ['Spark', 'Spark DataFrame']
 categories: ['Apache Spark', 'Tutorial']
@@ -45,7 +45,7 @@ val df = spark.read.option("header", "true").csv(".../data/flight-data/csv/*")
 +--------------------+-------------------+-----+
 only showing top 20 rows
 ```
-After adding a column containing the row number, the result should look like : 
+After adding a column containing the row number, the result should look like: 
 ```plaintext
 +--------------------+-------------------+-----+-------+
 |   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
@@ -72,17 +72,17 @@ After adding a column containing the row number, the result should look like :
 |       United States|             Russia|  156|     20|
 +--------------------+-------------------+-----+-------+
 ```
-* `row_num` will contain a sequential consecutive incremental and unique row number that will cover the whole dataframe.
+* `row_num` will contain a sequential consecutive row number that will cover the whole dataframe.
 
-## The Ugly Way : Using Window functions
+## The Ugly Way: Using Window functions
 -------
 Starting from Spark 1.4, a new feature called Window functions has been introduced to Spark SQL (see [**Databricks blog post**](https://databricks.com/fr/blog/2015/07/15/introducing-window-functions-in-spark-sql.html)). This feature allows to apply aggregations over a dataframe, while returning an output with the same number of rows as the input (unlike grouping aggregations).
 
 Using window functions can be a straightforward way to add sequential consecutive row numbers to a dataframe, by using a specific window function called .. `row_number()`.
 
-This can be done in two steps : 
+This can be done in two steps: 
 
-#### Step 1 : define a window specification 
+#### Step 1: define a window specification 
 ```scala
 import org.apache.spark.sql.expressions.Window 
 
@@ -91,12 +91,12 @@ val windSpec = Window.partitionBy(lit(0))
 
 ```
 
-In our window specification we answered two questions : 
-* How to partition the data (`partitionBy`) : In order to have a consecutive and sequential row id that covers the entire dataframe, we need to partition in a way that all the data ends up in one single partition (and this is why it is a bad idea).
-* How to order elements inside the same partition (`orderBy`) : So as to preserve the natural order, we will sort the dataframe using `monotonically_increasing_id()` : this function generates an ordered and unique but not consecutive row id (we will see more about this function in the next section). 
+In our window specification we answered two questions: 
+* How to partition the data (`partitionBy`): In order to have a consecutive and sequential row id that covers the entire dataframe, we need to partition in a way that all the data ends up in one single partition (and -this is why it is a bad idea-).
+* How to order elements inside the same partition (`orderBy`): So as to preserve the natural order, we will sort the dataframe using `monotonically_increasing_id()`. This function generates an ordered and unique but not consecutive row id (we will see more about this function in the next section). 
 
 
-#### Step 2 : apply `row_number()` to the dataframe using the window specification that we have defined in Step 1
+#### Step 2: apply `row_number()` to the dataframe using the window specification that we have defined in Step 1
 ```scala
 val df2 = df.withColumn("row_num", row_number().over(windSpec))
 ```
@@ -129,7 +129,7 @@ only showing top 20 rows
 ```
 Done! 
 
-Now, we have a column containing a consecutive row number. But, let’s take a closer look at the result, and show the first and the last row, along with the partition id for each row :
+Now, we have a column containing a consecutive row number. However, if we take a closer look at the result, and show the first and the last row, along with the partition id, we will observe this:
 
 ```scala
 val df3 = df2.withColumn("partition_id", spark_partition_id()).filter(expr("row_num in (1, 1502)"))
@@ -144,16 +144,18 @@ val df3 = df2.withColumn("partition_id", spark_partition_id()).filter(expr("row_
 ```
 As I said before, this method requires to group all the data in one single partition (here the chosen partition was n° 191).
 
-This constraint takes away one of the major benefits of Spark, namely, the distributed massively parallel computation. Because, only one task will be (sequentially) executed in order to compute the row number.
+This constraint takes away one of the major benefits of Spark, namely, the parallel computation. Because, only one task will be (sequentially) executed in order to compute the row number.
 
 In the next section, we will try explore another way which is a little bit longer, but which tries to take more advantage of the parallel and distributed computation offered by Spark
 
 ## The Other Way
 ------
-In order to compute the row numbers in parallel, we firstly need to compute and offset for each partition offset, and will compute the row number by adding the partition offset to the row offset (inside its partition). This can be done in 4 steps :
+In this method, we will associate each row with its offset in the partition, and then, we will compute a global offset for each partition, and finally we will add up the two offsets to get the row number. 
+
+This can be done in 4 steps:
 
 #### Step 1 
-Again, we will use the `monotonically_increasing_id()` function to add an identifier to each row. Let’s call it `row_id` :
+Similar to the last section, we will use the `monotonically_increasing_id()` function to associate a unique identifier to each row. Let’s call it `row_id`:
 
 ```scala
 val df2 = df.withColumn("row_id", monotonically_increasing_id())
@@ -186,7 +188,7 @@ val df2 = df.withColumn("row_id", monotonically_increasing_id())
 only showing top 20 rows
 ```
 
-At the first sight, the result looks almost like what we are looking for, but it is not really : 
+At the first sight, the result looks almost like what we are looking for, but it is not really: 
 ```scala
 df2.orderBy('row_id.desc).show
 ```
@@ -218,12 +220,12 @@ df2.orderBy('row_id.desc).show
 only showing top 20 rows
 ```
 
-The `row_id` is way bigger than the total count of this dataset (which is 1 502 rows), and that is because the id generated by `monotonically_increatsing_id()` function is (bitwise) composed of two parts : 
+The `row_id` is way bigger than the total count of this dataset (which is 1 502 rows), and that is because the id generated by `monotonically_increatsing_id()` is (bitwise) composed of two parts: 
 ![](monotonically_increasing_id.jpg)
 
 
 #### Step 2 
-Let’s separate the two parts into two different columns : 
+Let’s separate the two parts into two different columns: 
 ```scala
 val df3 = df2.withColumn("partition_id", shiftRight('row_id,33))
              .withColumn("row_offset", 'row_id.bitwiseAND(2147483647))
@@ -246,11 +248,11 @@ val df3 = df2.withColumn("partition_id", shiftRight('row_id,33))
 only showing top 10 rows
 ```
 
-* `shiftRight` : is used to extract the partition id by shifting the id 33 bits to the right (equivalent to the >> operator).
-* `bitwiseAnd` : is used in order to isolate the row offset by applying a bit mask that zeroes the upper 31 bits and keeps the 33 lower bits (the mask is 2147483647 in decimal, which is equivalent to 1111111111111111111111111111111 in binary).
+* `shiftRight`: is used to extract the partition id, by shifting the id by 33 bits to the right (equivalent to the `>>` operator).
+* `bitwiseAnd`: is used to isolate the row offset by applying a bit mask (`1111111111111111111111111111111`) that zeroes the upper 31 bits and keeps the 33 lower bits. If you wonder where does this number (`2147483647`) come from, it just the decimal representation of the mask.
 
 #### Step 3 
-Now that we have calculated a local offset for each row, in the next step, we will calculate the global offset for each partition : 
+Now that we have calculated a local offset for each row, in the next step, we will calculate the global offset for each partition. Let's start by calculating the size of each partition:  
 ```scala
 val partitions_size = df3.groupBy("partition_id")
                          .count()
@@ -268,7 +270,7 @@ val partitions_size = df3.groupBy("partition_id")
 |           4|           244|
 +------------+--------------+
 ```
-At this point, we have calculated the size of each partition (the number of rows per partition). In order to calculate the global offset of each partition, we will do an aggregation over a window specification, so that we compute for each partition the sum of sizes of its preceding partitions : 
+At this point, we have calculated the size of each partition (the number of rows per partition). In order to calculate the global offset of each partition, we will do an aggregation over a window specification, so that we compute for each partition the sum of sizes of its preceding partitions: 
 ```scala
 import org.apache.spark.sql.expressions.Window
 
@@ -290,9 +292,13 @@ val partitions_offset = partitions_size.withColumn("partition_offset", sum("part
 |           5|           240|            1256|
 +------------+--------------+----------------+
 ```
+* `rowsBetween`: in the last section we have seen that a window specification answered two questions: how to partition the data and how to order the data. There is a third question that can be answered: how to frame the data i.e, which rows will be aggregated together in to compute the current row? 
+* In our case, we used `rowsBetween(Window.unboundedPreceding, -1)` to indicate that for the current row, we need to aggregate all the preceding rows, start from the first row.
+* `orderBy`: this we have already seen, it will define how to order the rows.
+
 We are almost there! We need to take care of the partition n°0, by setting its offset to 0. 
 
-To do so, we will use a conditional column definition (**when(**\<condition\>, \<column definition 1\> **).otherwise(**\<column definition 2\> **)**) : 
+To do so, we will use a conditional column definition (**when(**\<condition\>, \<column definition 1\> **).otherwise(**\<column definition 2\> **)**): 
 
 ```scala
 val partitions_offset = partitions_size.withColumn("partition_offset", 
@@ -312,7 +318,7 @@ val partitions_offset = partitions_size.withColumn("partition_offset",
 +------------+--------------+----------------+
 ```
 #### Step 4
-From this point, computing the row number can be done by adding the row offset to the partition offset. That is why we firstly need to join the main dataframe with the `partitions_offset` dataframe that we calculated in Step 3 : 
+From this point, computing the row number can be done by adding the row offset to the partition offset. That is why we firstly need to join the main dataframe with the `partitions_offset` dataframe that we calculated in Step 3: 
 
 ```scala
 val df4 = df3.join(broadcast(partitions_offset), "partition_id")
@@ -345,7 +351,7 @@ val df4 = df3.join(broadcast(partitions_offset), "partition_id")
 +--------------------+-------------------+-----+-------+
 only showing top 20 rows
 ```
-* `broadcast` : before joining, we added a broadcast hint so that the `partitions_offset` dataframe gets broadcasted through the Spark cluster to avoid shuffles.
+* `broadcast`: before joining, we added a broadcast hint so that the `partitions_offset` dataframe gets broadcasted through the Spark cluster to avoid shuffles.
 * We needed to adjust the calculation by adding 1 to the offsets so that `row_num` starts from 1.
 
 ## Conclusion
@@ -353,7 +359,7 @@ In this tutorial, we explored two different ways to add a sequential consecutive
 
 I’ve made some comparisons of execution times using 9 datasets with different numbers of rows. I run my tests on a local setting (8 cores). 
 
-The numbers talk for themselves : 
+The numbers talk for themselves: 
 
 |Rows number|Method 1 (in seconds)|Method 2 (in seconds)|
 |-----------|---------------------|---------------------|
@@ -367,7 +373,7 @@ The numbers talk for themselves :
 |5 359 680|51|5|
 |10 719 360|97|12|
 
-Unsurprisingly, the first method does not scale very well, and processing time adds up due to the sequential execution. Here's a chart with the same data : 
+Unsurprisingly, the first method does not scale, and the processing time adds up due to the sequential execution. Here's a chart with the same data: 
  ![](chart.png)
 
-Thank you for reading this tutorial.. Please don’t hesitate to share your insight in the comment section :) 
+Thank you for reading this tutorial.. Please don’t hesitate to share your insight in the comment section:) 

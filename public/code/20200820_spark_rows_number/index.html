@@ -14,15 +14,15 @@
     <title>
         
            
-               Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe? &vert; Data Programmers
+               Spark Dataframe: How to row numbers to a dataframe? &vert; Data Programmers
            
         
     </title>
-    <meta name="description" content="Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
-    <meta itemprop="name" content="Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe?">
-    <meta itemprop="description" content="Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
-    <meta property="og:title" content="Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe?">
-    <meta property="og:description" content="Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
+    <meta name="description" content="Spark Dataframe: How to row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
+    <meta itemprop="name" content="Spark Dataframe: How to row numbers to a dataframe?">
+    <meta itemprop="description" content="Spark Dataframe: How to row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
+    <meta property="og:title" content="Spark Dataframe: How to row numbers to a dataframe?">
+    <meta property="og:description" content="Spark Dataframe: How to row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
     <meta property="og:image" content="https://www.datarchy.tech/public/Apache_Spark_logo.svg.png">
     <meta property="og:url" content="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">
     <meta property="og:site_name" content="Data Programmers">
@@ -137,7 +137,7 @@
     <div class="content">
     <h1 class="article-title">
         <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">
-            Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe?
+            Spark Dataframe: How to row numbers to a dataframe?
         </a>
     </h1>
 
@@ -205,7 +205,7 @@
 |       United States|             Russia|  156|
 +--------------------+-------------------+-----+
 only showing top 20 rows
-</code></pre></div><p>After adding a column containing the row number, the result should look like :</p>
+</code></pre></div><p>After adding a column containing the row number, the result should look like:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+-------+
 |   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
 +--------------------+-------------------+-----+-------+
@@ -231,25 +231,25 @@ only showing top 20 rows
 |       United States|             Russia|  156|     20|
 +--------------------+-------------------+-----+-------+
 </code></pre></div><ul>
-<li><code>row_num</code> will contain a sequential consecutive incremental and unique row number that will cover the whole dataframe.</li>
+<li><code>row_num</code> will contain a sequential consecutive row number that will cover the whole dataframe.</li>
 </ul>
-<h2 id="the-ugly-way--using-window-functions">The Ugly Way : Using Window functions</h2>
+<h2 id="the-ugly-way-using-window-functions">The Ugly Way: Using Window functions</h2>
 <hr>
 <p>Starting from Spark 1.4, a new feature called Window functions has been introduced to Spark SQL (see <a href="https://databricks.com/fr/blog/2015/07/15/introducing-window-functions-in-spark-sql.html"><strong>Databricks blog post</strong></a>). This feature allows to apply aggregations over a dataframe, while returning an output with the same number of rows as the input (unlike grouping aggregations).</p>
 <p>Using window functions can be a straightforward way to add sequential consecutive row numbers to a dataframe, by using a specific window function called .. <code>row_number()</code>.</p>
-<p>This can be done in two steps :</p>
-<h4 id="step-1--define-a-window-specification">Step 1 : define a window specification</h4>
+<p>This can be done in two steps:</p>
+<h4 id="step-1-define-a-window-specification">Step 1: define a window specification</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">import</span> org.apache.spark.sql.expressions.Window 
 
 <span style="color:#66d9ef">val</span> windSpec <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Window</span><span style="color:#f92672">.</span>partitionBy<span style="color:#f92672">(</span>lit<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">))</span>
                      <span style="color:#f92672">.</span>orderBy<span style="color:#f92672">(</span>monotonically_increasing_id<span style="color:#f92672">())</span>
 
-</code></pre></div><p>In our window specification we answered two questions :</p>
+</code></pre></div><p>In our window specification we answered two questions:</p>
 <ul>
-<li>How to partition the data (<code>partitionBy</code>) : In order to have a consecutive and sequential row id that covers the entire dataframe, we need to partition in a way that all the data ends up in one single partition (and this is why it is a bad idea).</li>
-<li>How to order elements inside the same partition (<code>orderBy</code>) : So as to preserve the natural order, we will sort the dataframe using <code>monotonically_increasing_id()</code> : this function generates an ordered and unique but not consecutive row id (we will see more about this function in the next section).</li>
+<li>How to partition the data (<code>partitionBy</code>): In order to have a consecutive and sequential row id that covers the entire dataframe, we need to partition in a way that all the data ends up in one single partition (and -this is why it is a bad idea-).</li>
+<li>How to order elements inside the same partition (<code>orderBy</code>): So as to preserve the natural order, we will sort the dataframe using <code>monotonically_increasing_id()</code>. This function generates an ordered and unique but not consecutive row id (we will see more about this function in the next section).</li>
 </ul>
-<h4 id="step-2--apply-row_number-to-the-dataframe-using-the-window-specification-that-we-have-defined-in-step-1">Step 2 : apply <code>row_number()</code> to the dataframe using the window specification that we have defined in Step 1</h4>
+<h4 id="step-2-apply-row_number-to-the-dataframe-using-the-window-specification-that-we-have-defined-in-step-1">Step 2: apply <code>row_number()</code> to the dataframe using the window specification that we have defined in Step 1</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df2 <span style="color:#66d9ef">=</span> df<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_num&#34;</span><span style="color:#f92672">,</span> row_number<span style="color:#f92672">().</span>over<span style="color:#f92672">(</span>windSpec<span style="color:#f92672">))</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+-------+
 |   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
@@ -277,7 +277,7 @@ only showing top 20 rows
 +--------------------+-------------------+-----+-------+
 only showing top 20 rows
 </code></pre></div><p>Done!</p>
-<p>Now, we have a column containing a consecutive row number. But, let’s take a closer look at the result, and show the first and the last row, along with the partition id for each row :</p>
+<p>Now, we have a column containing a consecutive row number. However, if we take a closer look at the result, and show the first and the last row, along with the partition id, we will observe this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df3 <span style="color:#66d9ef">=</span> df2<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">,</span> spark_partition_id<span style="color:#f92672">()).</span>filter<span style="color:#f92672">(</span>expr<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_num in (1, 1502)&#34;</span><span style="color:#f92672">))</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+-----------------+-------------------+-----+-------+------------+
 |DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|partition_id|
@@ -286,13 +286,14 @@ only showing top 20 rows
 |           Greece|      United States|   20|   1502|         191|
 +-----------------+-------------------+-----+-------+------------+
 </code></pre></div><p>As I said before, this method requires to group all the data in one single partition (here the chosen partition was n° 191).</p>
-<p>This constraint takes away one of the major benefits of Spark, namely, the distributed massively parallel computation. Because, only one task will be (sequentially) executed in order to compute the row number.</p>
+<p>This constraint takes away one of the major benefits of Spark, namely, the parallel computation. Because, only one task will be (sequentially) executed in order to compute the row number.</p>
 <p>In the next section, we will try explore another way which is a little bit longer, but which tries to take more advantage of the parallel and distributed computation offered by Spark</p>
 <h2 id="the-other-way">The Other Way</h2>
 <hr>
-<p>In order to compute the row numbers in parallel, we firstly need to compute and offset for each partition offset, and will compute the row number by adding the partition offset to the row offset (inside its partition). This can be done in 4 steps :</p>
+<p>In this method, we will associate each row with its offset in the partition, and then, we will compute a global offset for each partition, and finally we will add up the two offsets to get the row number.</p>
+<p>This can be done in 4 steps:</p>
 <h4 id="step-1">Step 1</h4>
-<p>Again, we will use the <code>monotonically_increasing_id()</code> function to add an identifier to each row. Let’s call it <code>row_id</code> :</p>
+<p>Similar to the last section, we will use the <code>monotonically_increasing_id()</code> function to associate a unique identifier to each row. Let’s call it <code>row_id</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df2 <span style="color:#66d9ef">=</span> df<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_id&#34;</span><span style="color:#f92672">,</span> monotonically_increasing_id<span style="color:#f92672">())</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+------+
 |   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_id|
@@ -319,7 +320,7 @@ only showing top 20 rows
 |       United States|             Russia|  156|    19|
 +--------------------+-------------------+-----+------+
 only showing top 20 rows
-</code></pre></div><p>At the first sight, the result looks almost like what we are looking for, but it is not really :</p>
+</code></pre></div><p>At the first sight, the result looks almost like what we are looking for, but it is not really:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">df2<span style="color:#f92672">.</span>orderBy<span style="color:#f92672">(</span>&#39;row_id<span style="color:#f92672">.</span>desc<span style="color:#f92672">).</span>show
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+--------------------+-----+-----------+
 |   DEST_COUNTRY_NAME| ORIGIN_COUNTRY_NAME|count|     row_id|
@@ -346,10 +347,10 @@ only showing top 20 rows
 |       United States|             Uruguay|   18|42949673181|
 +--------------------+--------------------+-----+-----------+
 only showing top 20 rows
-</code></pre></div><p>The <code>row_id</code> is way bigger than the total count of this dataset (which is 1 502 rows), and that is because the id generated by <code>monotonically_increatsing_id()</code> function is (bitwise) composed of two parts :
+</code></pre></div><p>The <code>row_id</code> is way bigger than the total count of this dataset (which is 1 502 rows), and that is because the id generated by <code>monotonically_increatsing_id()</code> is (bitwise) composed of two parts:
 <img src="monotonically_increasing_id.jpg" alt=""></p>
 <h4 id="step-2">Step 2</h4>
-<p>Let’s separate the two parts into two different columns :</p>
+<p>Let’s separate the two parts into two different columns:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df3 <span style="color:#66d9ef">=</span> df2<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">,</span> shiftRight<span style="color:#f92672">(</span>&#39;row_id<span style="color:#f92672">,</span><span style="color:#ae81ff">33</span><span style="color:#f92672">))</span>
              <span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_offset&#34;</span><span style="color:#f92672">,</span> &#39;row_id<span style="color:#f92672">.</span>bitwiseAND<span style="color:#f92672">(</span><span style="color:#ae81ff">2147483647</span><span style="color:#f92672">))</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+-----------------+-------------------+-----+------+------------+----------+
@@ -368,11 +369,11 @@ only showing top 20 rows
 +-----------------+-------------------+-----+------+------------+----------+
 only showing top 10 rows
 </code></pre></div><ul>
-<li><code>shiftRight</code> : is used to extract the partition id by shifting the id 33 bits to the right (equivalent to the &raquo; operator).</li>
-<li><code>bitwiseAnd</code> : is used in order to isolate the row offset by applying a bit mask that zeroes the upper 31 bits and keeps the 33 lower bits (the mask is 2147483647 in decimal, which is equivalent to 1111111111111111111111111111111 in binary).</li>
+<li><code>shiftRight</code>: is used to extract the partition id, by shifting the id by 33 bits to the right (equivalent to the <code>&gt;&gt;</code> operator).</li>
+<li><code>bitwiseAnd</code>: is used to isolate the row offset by applying a bit mask (<code>1111111111111111111111111111111</code>) that zeroes the upper 31 bits and keeps the 33 lower bits. If you wonder where does this number (<code>2147483647</code>) come from, it just the decimal representation of the mask.</li>
 </ul>
 <h4 id="step-3">Step 3</h4>
-<p>Now that we have calculated a local offset for each row, in the next step, we will calculate the global offset for each partition :</p>
+<p>Now that we have calculated a local offset for each row, in the next step, we will calculate the global offset for each partition. Let&rsquo;s start by calculating the size of each partition:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> partitions_size <span style="color:#66d9ef">=</span> df3<span style="color:#f92672">.</span>groupBy<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">)</span>
                          <span style="color:#f92672">.</span>count<span style="color:#f92672">()</span>
                          <span style="color:#f92672">.</span>withColumnRenamed<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;count&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;partition_size&#34;</span><span style="color:#f92672">)</span>
@@ -386,7 +387,7 @@ only showing top 10 rows
 |           2|           254|
 |           4|           244|
 +------------+--------------+
-</code></pre></div><p>At this point, we have calculated the size of each partition (the number of rows per partition). In order to calculate the global offset of each partition, we will do an aggregation over a window specification, so that we compute for each partition the sum of sizes of its preceding partitions :</p>
+</code></pre></div><p>At this point, we have calculated the size of each partition (the number of rows per partition). In order to calculate the global offset of each partition, we will do an aggregation over a window specification, so that we compute for each partition the sum of sizes of its preceding partitions:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">import</span> org.apache.spark.sql.expressions.Window
 
 <span style="color:#66d9ef">val</span> windowSpec <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Window</span><span style="color:#f92672">.</span>orderBy<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">)</span>
@@ -404,8 +405,13 @@ only showing top 10 rows
 |           4|           244|            1012|
 |           5|           240|            1256|
 +------------+--------------+----------------+
-</code></pre></div><p>We are almost there! We need to take care of the partition n°0, by setting its offset to 0.</p>
-<p>To do so, we will use a conditional column definition (<strong>when(</strong>&lt;condition&gt;, &lt;column definition 1&gt; <strong>).otherwise(</strong>&lt;column definition 2&gt; <strong>)</strong>) :</p>
+</code></pre></div><ul>
+<li><code>rowsBetween</code>: in the last section we have seen that a window specification answered two questions: how to partition the data and how to order the data. There is a third question that can be answered: how to frame the data i.e, which rows will be aggregated together in to compute the current row?</li>
+<li>In our case, we used <code>rowsBetween(Window.unboundedPreceding, -1)</code> to indicate that for the current row, we need to aggregate all the preceding rows, start from the first row.</li>
+<li><code>orderBy</code>: this we have already seen, it will define how to order the rows.</li>
+</ul>
+<p>We are almost there! We need to take care of the partition n°0, by setting its offset to 0.</p>
+<p>To do so, we will use a conditional column definition (<strong>when(</strong>&lt;condition&gt;, &lt;column definition 1&gt; <strong>).otherwise(</strong>&lt;column definition 2&gt; <strong>)</strong>):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> partitions_offset <span style="color:#66d9ef">=</span> partitions_size<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_offset&#34;</span><span style="color:#f92672">,</span> 
                 when<span style="color:#f92672">(</span>expr<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id = 0&#34;</span><span style="color:#f92672">),</span> lit<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">))</span>
                 <span style="color:#f92672">.</span>otherwise<span style="color:#f92672">(</span>sum<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_size&#34;</span><span style="color:#f92672">).</span>over<span style="color:#f92672">(</span>windowSpec<span style="color:#f92672">)))</span>
@@ -420,7 +426,7 @@ only showing top 10 rows
 |           5|           240|            1256|
 +------------+--------------+----------------+
 </code></pre></div><h4 id="step-4">Step 4</h4>
-<p>From this point, computing the row number can be done by adding the row offset to the partition offset. That is why we firstly need to join the main dataframe with the <code>partitions_offset</code> dataframe that we calculated in Step 3 :</p>
+<p>From this point, computing the row number can be done by adding the row offset to the partition offset. That is why we firstly need to join the main dataframe with the <code>partitions_offset</code> dataframe that we calculated in Step 3:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df4 <span style="color:#66d9ef">=</span> df3<span style="color:#f92672">.</span>join<span style="color:#f92672">(</span>broadcast<span style="color:#f92672">(</span>partitions_offset<span style="color:#f92672">),</span> <span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">)</span>
              <span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_num&#34;</span><span style="color:#f92672">,</span> &#39;partition_offset<span style="color:#f92672">+</span>&#39;row_offset<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+-------+
@@ -449,13 +455,13 @@ only showing top 10 rows
 +--------------------+-------------------+-----+-------+
 only showing top 20 rows
 </code></pre></div><ul>
-<li><code>broadcast</code> : before joining, we added a broadcast hint so that the <code>partitions_offset</code> dataframe gets broadcasted through the Spark cluster to avoid shuffles.</li>
+<li><code>broadcast</code>: before joining, we added a broadcast hint so that the <code>partitions_offset</code> dataframe gets broadcasted through the Spark cluster to avoid shuffles.</li>
 <li>We needed to adjust the calculation by adding 1 to the offsets so that <code>row_num</code> starts from 1.</li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>In this tutorial, we explored two different ways to add a sequential consecutive row numbers to a dataframe. The first one does not use the parallelism that Spark offers. While the second one tries to parallelize the computation.</p>
 <p>I’ve made some comparisons of execution times using 9 datasets with different numbers of rows. I run my tests on a local setting (8 cores).</p>
-<p>The numbers talk for themselves :</p>
+<p>The numbers talk for themselves:</p>
 <table>
 <thead>
 <tr>
@@ -512,9 +518,9 @@ only showing top 20 rows
 </tr>
 </tbody>
 </table>
-<p>Unsurprisingly, the first method does not scale very well, and processing time adds up due to the sequential execution. Here&rsquo;s a chart with the same data :
+<p>Unsurprisingly, the first method does not scale, and the processing time adds up due to the sequential execution. Here&rsquo;s a chart with the same data:
 <img src="chart.png" alt=""></p>
-<p>Thank you for reading this tutorial.. Please don’t hesitate to share your insight in the comment section :)</p>
+<p>Thank you for reading this tutorial.. Please don’t hesitate to share your insight in the comment section:)</p>
 
     
 </div>
@@ -589,7 +595,7 @@ only showing top 20 rows
             <ul>
                 
                 <li>
-                    <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe?</a>
+                    <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">Spark Dataframe: How to row numbers to a dataframe?</a>
                 </li>
                 
                 <li>
