@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Spark on Data Programmers</title>
-    <link>https://www.datarchy.tech/public/tags/spark/</link>
-    <description>Recent content in Spark on Data Programmers</description>
+    <title>Apache Spark on Data Programmers</title>
+    <link>https://www.datarchy.tech/public/categories/apache-spark/</link>
+    <description>Recent content in Apache Spark on Data Programmers</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0100</lastBuildDate>
     
-	<atom:link href="https://www.datarchy.tech/public/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.datarchy.tech/public/categories/apache-spark/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

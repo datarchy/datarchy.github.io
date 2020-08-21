@@ -1,7 +1,8 @@
 ---
-title: "Spark DataFrame : two ways to count the number of rows per partition"
+title: "Spark DataFrame - two ways to count the number of rows per partition"
 date: 2020-08-15T00:00:00+01:00
 tags: ['Spark', 'DataFrame']
+categories: ['Apache Spark', 'Tutorial']
 author: "Wissem Belguidoum"
 noSummary: false
 featuredImage: Apache_Spark_logo.svg.png
@@ -10,7 +11,7 @@ pygmentsCodefences: true
 
 ---
 
-Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways : 
+Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways: 
 
 * The first way is using ```Dataframe.mapPartitions()```.
 
@@ -28,7 +29,7 @@ val df = spark.read.csv("file:///.../status.csv")
 ```
 
 
-## Method 1 : using mapPartitions()
+## Method 1 - using mapPartitions()
 Scala : 
 ```scala
 val countByPartition1 = 
@@ -48,7 +49,7 @@ The final result will be an array that contains the size of each partition, wher
 countByPartition1: Array[Int] = Array(4949155, 4863123, 4796844, 4910927, 4864103, 4848557, 4790660, 4985291, 4858505, 4853698, 4874157, 4814367, 4805210, 4790091, 3979746)
 ```
 
-## Method 2 : using spark_partition_id()
+## Method 2 - using spark_partition_id()
 
 Scala : 
 ```scala
@@ -65,7 +66,9 @@ val countByPartition2 = df.groupBy(spark_partition_id())
 countByPartition2: Array[org.apache.spark.sql.Row] = Array([12,4805210], [1,4863123], [13,4790091], [6,4790660], [3,4910927], [5,4848557], [9,4853698], [4,4864103], [8,4858505], [7,4985291], [10,4874157], [11,4814367], [14,3979746], [2,4796844], [0,4949155])
 ```
 
-## Conclusion :
+## Conclusion 
 
-You can use either way to compute the number of rows per partition.
+You can go either way to compute the number of rows per partition.
 However, I've noticed that the second method can be up to 5 times faster than the first method.
+
+This can be useful to find and resolve performance issues related to data skewness. 

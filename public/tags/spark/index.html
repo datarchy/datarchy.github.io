@@ -122,6 +122,105 @@
     
         <div class="article-wrapper u-cf">
             
+                <a class="bubble" href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">
+    <i class="fas fa-fw fa-code"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">
+            <img src="/public/Apache_Spark_logo.svg.png" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h1 class="article-title">
+        <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">
+            Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe?
+        </a>
+    </h1>
+
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-08-20</span>
+            
+        
+
+        
+
+        
+            <span class="categories">
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/public/categories/apache-spark/">Apache Spark</a>
+                    
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/public/categories/tutorial/">Tutorial</a>
+                    
+                
+            </span>
+        
+
+        
+            <span class="author">
+                
+                
+                    <a href="https://www.datarchy.tech/public/author/wissem-belguidoum/">Wissem Belguidoum</a>
+                
+            </span>
+        
+    </div>
+
+    
+        In this tutorial, we will explore a couple of ways to add a sequential consecutive row number to a dataframe.
+For example, let this be our dataframe (taken from Spark: The Definitive Guide github repo):
+val df = spark.read.option(&#34;header&#34;, &#34;true&#34;).csv(&#34;.../data/flight-data/csv/*&#34;) +--------------------+-------------------+-----+ | DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count| +--------------------+-------------------+-----+ | United States| Romania| 1| | United States| Ireland| 264| | United States| India| 69| | Egypt| United States| 24| | Equatorial Guinea| United States| 1| | United States| Singapore| 25| | United States| Grenada| 54| | Costa Rica| United States| 477| | Senegal| United States| 29| | United States| Marshall Islands| 44| | Guyana| United States| 17| | United States| Sint Maarten| 53| | Malta| United States| 1| | Bolivia| United States| 46| | Anguilla| United States| 21| |Turks and Caicos .
+
+        
+            <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/" class="more">Continue reading</a>
+        
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/public/tags/spark/">Spark</a>
+                    
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/public/tags/spark-dataframe/">Spark DataFrame</a>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+            
+        </div>
+    
+        <div class="article-wrapper u-cf">
+            
                 <a class="bubble" href="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">
     <i class="fas fa-fw fa-pencil-alt"></i>
 </a>
@@ -138,7 +237,7 @@
     <div class="content">
     <h1 class="article-title">
         <a href="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">
-            Spark DataFrame : two ways to count the number of rows per partition
+            Spark DataFrame - two ways to count the number of rows per partition
         </a>
     </h1>
 
@@ -152,6 +251,20 @@
         
 
         
+            <span class="categories">
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/public/categories/apache-spark/">Apache Spark</a>
+                    
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/public/categories/tutorial/">Tutorial</a>
+                    
+                
+            </span>
+        
 
         
             <span class="author">
@@ -164,7 +277,7 @@
     </div>
 
     
-        Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways :
+        Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways:
   The first way is using Dataframe.mapPartitions().
   The second way (the faster according to my observations) is using the spark_partition_id() function, followed by a grouping count aggregation.
   Let&rsquo;s first load the data into a dataframe I have used the SF Bay Area Bike data source, that can be found here
@@ -228,7 +341,11 @@
             <ul>
                 
                 <li>
-                    <a href="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">Spark DataFrame : two ways to count the number of rows per partition</a>
+                    <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe?</a>
+                </li>
+                
+                <li>
+                    <a href="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">Spark DataFrame - two ways to count the number of rows per partition</a>
                 </li>
                 
                 <li>
@@ -243,6 +360,16 @@
         <div class="categories">
             <a href="/public/categories/"><strong>Categories</strong></a>
             <ul>
+                
+                <li>
+                    <a href="/public/categories/apache-spark">Apache spark
+                        (2)</a>
+                </li>
+                
+                <li>
+                    <a href="/public/categories/tutorial">Tutorial
+                        (2)</a>
+                </li>
                 
                 <li>
                     <a href="/public/categories/motivation">Motivation

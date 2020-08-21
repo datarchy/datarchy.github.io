@@ -14,15 +14,15 @@
     <title>
         
            
-               Spark DataFrame : two ways to count the number of rows per partition &vert; Data Programmers
+               Spark DataFrame - two ways to count the number of rows per partition &vert; Data Programmers
            
         
     </title>
-    <meta name="description" content="Spark DataFrame : two ways to count the number of rows per partition - Wissem Belguidoum Data Engineer Datarchy">
-    <meta itemprop="name" content="Spark DataFrame : two ways to count the number of rows per partition">
-    <meta itemprop="description" content="Spark DataFrame : two ways to count the number of rows per partition - Wissem Belguidoum Data Engineer Datarchy">
-    <meta property="og:title" content="Spark DataFrame : two ways to count the number of rows per partition">
-    <meta property="og:description" content="Spark DataFrame : two ways to count the number of rows per partition - Wissem Belguidoum Data Engineer Datarchy">
+    <meta name="description" content="Spark DataFrame - two ways to count the number of rows per partition - Wissem Belguidoum Data Engineer Datarchy">
+    <meta itemprop="name" content="Spark DataFrame - two ways to count the number of rows per partition">
+    <meta itemprop="description" content="Spark DataFrame - two ways to count the number of rows per partition - Wissem Belguidoum Data Engineer Datarchy">
+    <meta property="og:title" content="Spark DataFrame - two ways to count the number of rows per partition">
+    <meta property="og:description" content="Spark DataFrame - two ways to count the number of rows per partition - Wissem Belguidoum Data Engineer Datarchy">
     <meta property="og:image" content="https://www.datarchy.tech/public/Apache_Spark_logo.svg.png">
     <meta property="og:url" content="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">
     <meta property="og:site_name" content="Data Programmers">
@@ -137,7 +137,7 @@
     <div class="content">
     <h1 class="article-title">
         <a href="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">
-            Spark DataFrame : two ways to count the number of rows per partition
+            Spark DataFrame - two ways to count the number of rows per partition
         </a>
     </h1>
 
@@ -151,6 +151,20 @@
         
 
         
+            <span class="categories">
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/public/categories/apache-spark/">Apache Spark</a>
+                    
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/public/categories/tutorial/">Tutorial</a>
+                    
+                
+            </span>
+        
 
         
             <span class="author">
@@ -163,7 +177,7 @@
     </div>
 
     
-        <p>Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways :</p>
+        <p>Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways:</p>
 <ul>
 <li>
 <p>The first way is using <code>Dataframe.mapPartitions()</code>.</p>
@@ -176,7 +190,7 @@
 <p><em>I have used the SF Bay Area Bike data source, that can be found <a href="https://www.kaggle.com/benhamner/sf-bay-area-bike-share/data#"><strong>here</strong></a></em></p>
 <p>Scala :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df <span style="color:#66d9ef">=</span> spark<span style="color:#f92672">.</span>read<span style="color:#f92672">.</span>csv<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;file:///.../status.csv&#34;</span><span style="color:#f92672">)</span>
-</code></pre></div><h2 id="method-1--using-mappartitions">Method 1 : using mapPartitions()</h2>
+</code></pre></div><h2 id="method-1---using-mappartitions">Method 1 - using mapPartitions()</h2>
 <p>Scala :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> countByPartition1 <span style="color:#66d9ef">=</span> 
        df<span style="color:#f92672">.</span>mapPartitions<span style="color:#f92672">(</span>iter <span style="color:#66d9ef">=&gt;</span> <span style="color:#a6e22e">Array</span><span style="color:#f92672">(</span>iter<span style="color:#f92672">.</span>size<span style="color:#f92672">).</span>iterator<span style="color:#f92672">)</span>
@@ -194,7 +208,7 @@
 </ul>
 <p>The final result will be an array that contains the size of each partition, where the index of the array is the partition ID :</p>
 <pre><code>countByPartition1: Array[Int] = Array(4949155, 4863123, 4796844, 4910927, 4864103, 4848557, 4790660, 4985291, 4858505, 4853698, 4874157, 4814367, 4805210, 4790091, 3979746)
-</code></pre><h2 id="method-2--using-spark_partition_id">Method 2 : using spark_partition_id()</h2>
+</code></pre><h2 id="method-2---using-spark_partition_id">Method 2 - using spark_partition_id()</h2>
 <p>Scala :</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> countByPartition2 <span style="color:#66d9ef">=</span> df<span style="color:#f92672">.</span>groupBy<span style="color:#f92672">(</span>spark_partition_id<span style="color:#f92672">())</span>
                           <span style="color:#f92672">.</span>count<span style="color:#f92672">()</span>
@@ -204,9 +218,10 @@
 <li>We group the dataframe by this column, and apply a count aggregation, which gives a new dataframe with two columns : Partition ID + Count of rows.</li>
 </ul>
 <pre><code>countByPartition2: Array[org.apache.spark.sql.Row] = Array([12,4805210], [1,4863123], [13,4790091], [6,4790660], [3,4910927], [5,4848557], [9,4853698], [4,4864103], [8,4858505], [7,4985291], [10,4874157], [11,4814367], [14,3979746], [2,4796844], [0,4949155])
-</code></pre><h2 id="conclusion-">Conclusion :</h2>
-<p>You can use either way to compute the number of rows per partition.
+</code></pre><h2 id="conclusion">Conclusion</h2>
+<p>You can go either way to compute the number of rows per partition.
 However, I&rsquo;ve noticed that the second method can be up to 5 times faster than the first method.</p>
+<p>This can be useful to find and resolve performance issues related to data skewness.</p>
 
     
 </div>
@@ -281,7 +296,11 @@ However, I&rsquo;ve noticed that the second method can be up to 5 times faster t
             <ul>
                 
                 <li>
-                    <a href="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">Spark DataFrame : two ways to count the number of rows per partition</a>
+                    <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe?</a>
+                </li>
+                
+                <li>
+                    <a href="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">Spark DataFrame - two ways to count the number of rows per partition</a>
                 </li>
                 
                 <li>
@@ -296,6 +315,16 @@ However, I&rsquo;ve noticed that the second method can be up to 5 times faster t
         <div class="categories">
             <a href="/public/categories/"><strong>Categories</strong></a>
             <ul>
+                
+                <li>
+                    <a href="/public/categories/apache-spark">Apache spark
+                        (2)</a>
+                </li>
+                
+                <li>
+                    <a href="/public/categories/tutorial">Tutorial
+                        (2)</a>
+                </li>
                 
                 <li>
                     <a href="/public/categories/motivation">Motivation

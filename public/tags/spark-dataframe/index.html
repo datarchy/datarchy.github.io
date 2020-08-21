@@ -14,17 +14,17 @@
     <title>
         
            
-               start now &vert; Data Programmers
+               Spark DataFrame &vert; Data Programmers
            
         
     </title>
-    <meta name="description" content="start now - Wissem Belguidoum Data Engineer Datarchy">
-    <meta itemprop="name" content="start now">
-    <meta itemprop="description" content="start now - Wissem Belguidoum Data Engineer Datarchy">
-    <meta property="og:title" content="start now">
-    <meta property="og:description" content="start now - Wissem Belguidoum Data Engineer Datarchy">
+    <meta name="description" content="Spark DataFrame - Wissem Belguidoum Data Engineer Datarchy">
+    <meta itemprop="name" content="Spark DataFrame">
+    <meta itemprop="description" content="Spark DataFrame - Wissem Belguidoum Data Engineer Datarchy">
+    <meta property="og:title" content="Spark DataFrame">
+    <meta property="og:description" content="Spark DataFrame - Wissem Belguidoum Data Engineer Datarchy">
     <meta property="og:image" content="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?size=200">
-    <meta property="og:url" content="https://www.datarchy.tech/public/tags/start-now/">
+    <meta property="og:url" content="https://www.datarchy.tech/public/tags/spark-dataframe/">
     <meta property="og:site_name" content="Data Programmers"><meta property="og:type" content="website">
 
     
@@ -37,8 +37,8 @@
 	<meta name="theme-color" content="#ffffff"> 
 
     
-    <link href="/public/tags/start-now/" rel="alternate" type="application/rss+xml" title="Data Programmers" />
-    <link href="/public/tags/start-now/" rel="feed" type="application/rss+xml" title="Data Programmers" />
+    <link href="/public/tags/spark-dataframe/" rel="alternate" type="application/rss+xml" title="Data Programmers" />
+    <link href="/public/tags/spark-dataframe/" rel="feed" type="application/rss+xml" title="Data Programmers" />
     
 
     
@@ -122,23 +122,98 @@
     
         <div class="article-wrapper u-cf">
             
-                <a class="bubble" href="https://www.datarchy.tech/public/quote/20200814_mark_twin_getting_started/">
-    <i class="fas fa-fw fa-quote-right"></i>
+                <a class="bubble" href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">
+    <i class="fas fa-fw fa-code"></i>
 </a>
 
-<article class="quote">
+<article class="default article">
     
+    <div class="featured-image">
+        <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">
+            <img src="/public/Apache_Spark_logo.svg.png" alt="">
+        </a>
+    </div>
 
-    <blockquote>
-        <p>“The secret to getting ahead is getting started.”</p>
+
+    <div class="content">
+    <h1 class="article-title">
+        <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">
+            Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe?
+        </a>
+    </h1>
+
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-08-20</span>
+            
+        
 
         
-        <cite>
-            <a href="/public/author/mark-twain">
-                Mark Twain
-            </a>
-        </cite>
-    </blockquote>
+
+        
+            <span class="categories">
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/public/categories/apache-spark/">Apache Spark</a>
+                    
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/public/categories/tutorial/">Tutorial</a>
+                    
+                
+            </span>
+        
+
+        
+            <span class="author">
+                
+                
+                    <a href="https://www.datarchy.tech/public/author/wissem-belguidoum/">Wissem Belguidoum</a>
+                
+            </span>
+        
+    </div>
+
+    
+        In this tutorial, we will explore a couple of ways to add a sequential consecutive row number to a dataframe.
+For example, let this be our dataframe (taken from Spark: The Definitive Guide github repo):
+val df = spark.read.option(&#34;header&#34;, &#34;true&#34;).csv(&#34;.../data/flight-data/csv/*&#34;) +--------------------+-------------------+-----+ | DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count| +--------------------+-------------------+-----+ | United States| Romania| 1| | United States| Ireland| 264| | United States| India| 69| | Egypt| United States| 24| | Equatorial Guinea| United States| 1| | United States| Singapore| 25| | United States| Grenada| 54| | Costa Rica| United States| 477| | Senegal| United States| 29| | United States| Marshall Islands| 44| | Guyana| United States| 17| | United States| Sint Maarten| 53| | Malta| United States| 1| | Bolivia| United States| 46| | Anguilla| United States| 21| |Turks and Caicos .
+
+        
+            <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/" class="more">Continue reading</a>
+        
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/public/tags/spark/">Spark</a>
+                    
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/public/tags/spark-dataframe/">Spark DataFrame</a>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
 </article>
 
             
@@ -247,7 +322,7 @@
                 by Datarchy
             </a>
             -
-            <a href="https://www.datarchy.tech/public/tags/start-now/index.xml">RSS</a>
+            <a href="https://www.datarchy.tech/public/tags/spark-dataframe/index.xml">RSS</a>
         </div>
         <div class="author">
             <a href="https://github.com/Lednerb/bilberry-hugo-theme"

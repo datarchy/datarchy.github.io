@@ -138,7 +138,7 @@
     <div class="content">
     <h1 class="article-title">
         <a href="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">
-            Spark DataFrame : two ways to count the number of rows per partition
+            Spark DataFrame - two ways to count the number of rows per partition
         </a>
     </h1>
 
@@ -152,6 +152,20 @@
         
 
         
+            <span class="categories">
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/public/categories/apache-spark/">Apache Spark</a>
+                    
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/public/categories/tutorial/">Tutorial</a>
+                    
+                
+            </span>
+        
 
         
             <span class="author">
@@ -164,7 +178,7 @@
     </div>
 
     
-        Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways :
+        Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways:
   The first way is using Dataframe.mapPartitions().
   The second way (the faster according to my observations) is using the spark_partition_id() function, followed by a grouping count aggregation.
   Let&rsquo;s first load the data into a dataframe I have used the SF Bay Area Bike data source, that can be found here
@@ -228,7 +242,11 @@
             <ul>
                 
                 <li>
-                    <a href="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">Spark DataFrame : two ways to count the number of rows per partition</a>
+                    <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">Spark Dataframe : How to add (a codnsecutive) row numbers to a dataframe?</a>
+                </li>
+                
+                <li>
+                    <a href="https://www.datarchy.tech/public/article/20200814_spark_count_per_partition/">Spark DataFrame - two ways to count the number of rows per partition</a>
                 </li>
                 
                 <li>
@@ -243,6 +261,16 @@
         <div class="categories">
             <a href="/public/categories/"><strong>Categories</strong></a>
             <ul>
+                
+                <li>
+                    <a href="/public/categories/apache-spark">Apache spark
+                        (2)</a>
+                </li>
+                
+                <li>
+                    <a href="/public/categories/tutorial">Tutorial
+                        (2)</a>
+                </li>
                 
                 <li>
                     <a href="/public/categories/motivation">Motivation
