@@ -14,15 +14,15 @@
     <title>
         
            
-               Spark Dataframe: How to row numbers to a dataframe? &vert; Data Programmers
+               Spark Dataframe: How to add row numbers to a dataframe? &vert; Data Programmers
            
         
     </title>
-    <meta name="description" content="Spark Dataframe: How to row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
-    <meta itemprop="name" content="Spark Dataframe: How to row numbers to a dataframe?">
-    <meta itemprop="description" content="Spark Dataframe: How to row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
-    <meta property="og:title" content="Spark Dataframe: How to row numbers to a dataframe?">
-    <meta property="og:description" content="Spark Dataframe: How to row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
+    <meta name="description" content="Spark Dataframe: How to add row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
+    <meta itemprop="name" content="Spark Dataframe: How to add row numbers to a dataframe?">
+    <meta itemprop="description" content="Spark Dataframe: How to add row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
+    <meta property="og:title" content="Spark Dataframe: How to add row numbers to a dataframe?">
+    <meta property="og:description" content="Spark Dataframe: How to add row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
     <meta property="og:image" content="https://www.datarchy.tech/public/Apache_Spark_logo.svg.png">
     <meta property="og:url" content="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">
     <meta property="og:site_name" content="Data Programmers">
@@ -137,7 +137,7 @@
     <div class="content">
     <h1 class="article-title">
         <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">
-            Spark Dataframe: How to row numbers to a dataframe?
+            Spark Dataframe: How to add row numbers to a dataframe?
         </a>
     </h1>
 
@@ -246,7 +246,7 @@ only showing top 20 rows
 
 </code></pre></div><p>In our window specification we answered two questions:</p>
 <ul>
-<li>How to partition the data (<code>partitionBy</code>): In order to have a consecutive and sequential row id that covers the entire dataframe, we need to partition in a way that all the data ends up in one single partition (and -this is why it is a bad idea-).</li>
+<li>How to partition the data (<code>partitionBy</code>): In order to have a consecutive and sequential row id that covers the entire dataframe, we need to partition in a way that all the data ends up in one single partition (and this is why it is ugly!).</li>
 <li>How to order elements inside the same partition (<code>orderBy</code>): So as to preserve the natural order, we will sort the dataframe using <code>monotonically_increasing_id()</code>. This function generates an ordered and unique but not consecutive row id (we will see more about this function in the next section).</li>
 </ul>
 <h4 id="step-2-apply-row_number-to-the-dataframe-using-the-window-specification-that-we-have-defined-in-step-1">Step 2: apply <code>row_number()</code> to the dataframe using the window specification that we have defined in Step 1</h4>
@@ -429,6 +429,7 @@ only showing top 10 rows
 <p>From this point, computing the row number can be done by adding the row offset to the partition offset. That is why we firstly need to join the main dataframe with the <code>partitions_offset</code> dataframe that we calculated in Step 3:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df4 <span style="color:#66d9ef">=</span> df3<span style="color:#f92672">.</span>join<span style="color:#f92672">(</span>broadcast<span style="color:#f92672">(</span>partitions_offset<span style="color:#f92672">),</span> <span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">)</span>
              <span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_num&#34;</span><span style="color:#f92672">,</span> &#39;partition_offset<span style="color:#f92672">+</span>&#39;row_offset<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span>
+             <span style="color:#f92672">.</span>drop<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;row_id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;row_offset&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;partition_size&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;partition_offset&#34;</span><span style="color:#f92672">)</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+-------+
 |   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
 +--------------------+-------------------+-----+-------+
@@ -457,6 +458,7 @@ only showing top 20 rows
 </code></pre></div><ul>
 <li><code>broadcast</code>: before joining, we added a broadcast hint so that the <code>partitions_offset</code> dataframe gets broadcasted through the Spark cluster to avoid shuffles.</li>
 <li>We needed to adjust the calculation by adding 1 to the offsets so that <code>row_num</code> starts from 1.</li>
+<li>We used <code>drop()</code> to clean out the intermediary columns.</li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>In this tutorial, we explored two different ways to add a sequential consecutive row numbers to a dataframe. The first one does not use the parallelism that Spark offers. While the second one tries to parallelize the computation.</p>
@@ -595,7 +597,7 @@ only showing top 20 rows
             <ul>
                 
                 <li>
-                    <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">Spark Dataframe: How to row numbers to a dataframe?</a>
+                    <a href="https://www.datarchy.tech/public/code/20200820_spark_rows_number/">Spark Dataframe: How to add row numbers to a dataframe?</a>
                 </li>
                 
                 <li>

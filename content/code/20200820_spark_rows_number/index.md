@@ -1,5 +1,5 @@
 ---
-title: "Spark Dataframe: How to row numbers to a dataframe?"
+title: "Spark Dataframe: How to add row numbers to a dataframe?"
 date: 2020-08-20T00:00:00+01:00
 tags: ['Spark', 'Spark DataFrame']
 categories: ['Apache Spark', 'Tutorial']
@@ -92,7 +92,7 @@ val windSpec = Window.partitionBy(lit(0))
 ```
 
 In our window specification we answered two questions: 
-* How to partition the data (`partitionBy`): In order to have a consecutive and sequential row id that covers the entire dataframe, we need to partition in a way that all the data ends up in one single partition (and -this is why it is a bad idea-).
+* How to partition the data (`partitionBy`): In order to have a consecutive and sequential row id that covers the entire dataframe, we need to partition in a way that all the data ends up in one single partition (and this is why it is ugly!).
 * How to order elements inside the same partition (`orderBy`): So as to preserve the natural order, we will sort the dataframe using `monotonically_increasing_id()`. This function generates an ordered and unique but not consecutive row id (we will see more about this function in the next section). 
 
 
@@ -323,6 +323,7 @@ From this point, computing the row number can be done by adding the row offset t
 ```scala
 val df4 = df3.join(broadcast(partitions_offset), "partition_id")
              .withColumn("row_num", 'partition_offset+'row_offset+1)
+             .drop("partition_id", "row_id", "row_offset", "partition_size", "partition_offset")
 ```
 ```plaintext
 +--------------------+-------------------+-----+-------+
@@ -353,6 +354,7 @@ only showing top 20 rows
 ```
 * `broadcast`: before joining, we added a broadcast hint so that the `partitions_offset` dataframe gets broadcasted through the Spark cluster to avoid shuffles.
 * We needed to adjust the calculation by adding 1 to the offsets so that `row_num` starts from 1.
+* We used `drop()` to clean out the intermediary columns.
 
 ## Conclusion
 In this tutorial, we explored two different ways to add a sequential consecutive row numbers to a dataframe. The first one does not use the parallelism that Spark offers. While the second one tries to parallelize the computation. 
