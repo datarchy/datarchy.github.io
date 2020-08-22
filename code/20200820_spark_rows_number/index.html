@@ -186,56 +186,27 @@
         <p>In this tutorial, we will explore a couple of ways to add a sequential consecutive row number to a dataframe.</p>
 <p>For example, let this be our dataframe (taken from <a href="https://github.com/databricks/Spark-The-Definitive-Guide"><strong>Spark: The Definitive Guide github repo</strong></a>):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df <span style="color:#66d9ef">=</span> spark<span style="color:#f92672">.</span>read<span style="color:#f92672">.</span>option<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;header&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">).</span>csv<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;.../data/flight-data/csv/*&#34;</span><span style="color:#f92672">)</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+
-|   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|
-+--------------------+-------------------+-----+
-|       United States|            Romania|    1|
-|       United States|            Ireland|  264|
-|       United States|              India|   69|
-|               Egypt|      United States|   24|
-|   Equatorial Guinea|      United States|    1|
-|       United States|          Singapore|   25|
-|       United States|            Grenada|   54|
-|          Costa Rica|      United States|  477|
-|             Senegal|      United States|   29|
-|       United States|   Marshall Islands|   44|
-|              Guyana|      United States|   17|
-|       United States|       Sint Maarten|   53|
-|               Malta|      United States|    1|
-|             Bolivia|      United States|   46|
-|            Anguilla|      United States|   21|
-|Turks and Caicos ...|      United States|  136|
-|       United States|        Afghanistan|    2|
-|Saint Vincent and...|      United States|    1|
-|               Italy|      United States|  390|
-|       United States|             Russia|  156|
-+--------------------+-------------------+-----+
-only showing top 20 rows
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+-----------------+-------------------+-----+
+|DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|
++-----------------+-------------------+-----+
+|    United States|            Romania|    1|
+|    United States|            Ireland|  264|
+|    United States|              India|   69|
+|            Egypt|      United States|   24|
+|Equatorial Guinea|      United States|    1|
++-----------------+-------------------+-----+
+only showing top 5 rows
 </code></pre></div><p>After adding a column containing the row number, the result should look like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+-------+
-|   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
-+--------------------+-------------------+-----+-------+
-|       United States|            Romania|    1|      1|
-|       United States|            Ireland|  264|      2|
-|       United States|              India|   69|      3|
-|               Egypt|      United States|   24|      4|
-|   Equatorial Guinea|      United States|    1|      5|
-|       United States|          Singapore|   25|      6|
-|       United States|            Grenada|   54|      7|
-|          Costa Rica|      United States|  477|      8|
-|             Senegal|      United States|   29|      9|
-|       United States|   Marshall Islands|   44|     10|
-|              Guyana|      United States|   17|     11|
-|       United States|       Sint Maarten|   53|     12|
-|               Malta|      United States|    1|     13|
-|             Bolivia|      United States|   46|     14|
-|            Anguilla|      United States|   21|     15|
-|Turks and Caicos ...|      United States|  136|     16|
-|       United States|        Afghanistan|    2|     17|
-|Saint Vincent and...|      United States|    1|     18|
-|               Italy|      United States|  390|     19|
-|       United States|             Russia|  156|     20|
-+--------------------+-------------------+-----+-------+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+-----------------+-------------------+-----+-------+
+|DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
++-----------------+-------------------+-----+-------+
+|    United States|            Romania|    1|      1|
+|    United States|            Ireland|  264|      2|
+|    United States|              India|   69|      3|
+|            Egypt|      United States|   24|      4|
+|Equatorial Guinea|      United States|    1|      5|
++-----------------+-------------------+-----+-------+
+only showing top 5 rows
 </code></pre></div><ul>
 <li><code>row_num</code> will contain a sequential consecutive row number that will cover the whole dataframe.</li>
 </ul>
@@ -257,31 +228,16 @@ only showing top 20 rows
 </ul>
 <h4 id="step-2-apply-row_number-to-the-dataframe-using-the-window-specification-that-we-have-defined-in-step-1">Step 2: apply <code>row_number()</code> to the dataframe using the window specification that we have defined in Step 1</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df2 <span style="color:#66d9ef">=</span> df<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_num&#34;</span><span style="color:#f92672">,</span> row_number<span style="color:#f92672">().</span>over<span style="color:#f92672">(</span>windSpec<span style="color:#f92672">))</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+-------+
-|   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
-+--------------------+-------------------+-----+-------+
-|       United States|            Romania|    1|      1|
-|       United States|            Ireland|  264|      2|
-|       United States|              India|   69|      3|
-|               Egypt|      United States|   24|      4|
-|   Equatorial Guinea|      United States|    1|      5|
-|       United States|          Singapore|   25|      6|
-|       United States|            Grenada|   54|      7|
-|          Costa Rica|      United States|  477|      8|
-|             Senegal|      United States|   29|      9|
-|       United States|   Marshall Islands|   44|     10|
-|              Guyana|      United States|   17|     11|
-|       United States|       Sint Maarten|   53|     12|
-|               Malta|      United States|    1|     13|
-|             Bolivia|      United States|   46|     14|
-|            Anguilla|      United States|   21|     15|
-|Turks and Caicos ...|      United States|  136|     16|
-|       United States|        Afghanistan|    2|     17|
-|Saint Vincent and...|      United States|    1|     18|
-|               Italy|      United States|  390|     19|
-|       United States|             Russia|  156|     20|
-+--------------------+-------------------+-----+-------+
-only showing top 20 rows
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+-----------------+-------------------+-----+-------+
+|DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
++-----------------+-------------------+-----+-------+
+|    United States|            Romania|    1|      1|
+|    United States|            Ireland|  264|      2|
+|    United States|              India|   69|      3|
+|            Egypt|      United States|   24|      4|
+|Equatorial Guinea|      United States|    1|      5|
++-----------------+-------------------+-----+-------+
+only showing top 5 rows
 </code></pre></div><p>Done!</p>
 <p>Now, we have a column containing a consecutive row number. However, if we take a closer look at the result, and show the first and the last row, along with the partition id, we will observe this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df3 <span style="color:#66d9ef">=</span> df2<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">,</span> spark_partition_id<span style="color:#f92672">()).</span>filter<span style="color:#f92672">(</span>expr<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_num in (1, 1502)&#34;</span><span style="color:#f92672">))</span>
@@ -301,31 +257,16 @@ only showing top 20 rows
 <h4 id="step-1">Step 1</h4>
 <p>Similar to the last section, we will use the <code>monotonically_increasing_id()</code> function to associate a unique identifier to each row. Let’s call it <code>row_id</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df2 <span style="color:#66d9ef">=</span> df<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_id&#34;</span><span style="color:#f92672">,</span> monotonically_increasing_id<span style="color:#f92672">())</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+------+
-|   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_id|
-+--------------------+-------------------+-----+------+
-|       United States|            Romania|    1|     0|
-|       United States|            Ireland|  264|     1|
-|       United States|              India|   69|     2|
-|               Egypt|      United States|   24|     3|
-|   Equatorial Guinea|      United States|    1|     4|
-|       United States|          Singapore|   25|     5|
-|       United States|            Grenada|   54|     6|
-|          Costa Rica|      United States|  477|     7|
-|             Senegal|      United States|   29|     8|
-|       United States|   Marshall Islands|   44|     9|
-|              Guyana|      United States|   17|    10|
-|       United States|       Sint Maarten|   53|    11|
-|               Malta|      United States|    1|    12|
-|             Bolivia|      United States|   46|    13|
-|            Anguilla|      United States|   21|    14|
-|Turks and Caicos ...|      United States|  136|    15|
-|       United States|        Afghanistan|    2|    16|
-|Saint Vincent and...|      United States|    1|    17|
-|               Italy|      United States|  390|    18|
-|       United States|             Russia|  156|    19|
-+--------------------+-------------------+-----+------+
-only showing top 20 rows
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+-----------------+-------------------+-----+------+
+|DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_id|
++-----------------+-------------------+-----+------+
+|    United States|            Romania|    1|     0|
+|    United States|            Ireland|  264|     1|
+|    United States|              India|   69|     2|
+|            Egypt|      United States|   24|     3|
+|Equatorial Guinea|      United States|    1|     4|
++-----------------+-------------------+-----+------+
+only showing top 5 rows
 </code></pre></div><p>At the first sight, the result looks almost like what we are looking for, but it is not really:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">df2<span style="color:#f92672">.</span>orderBy<span style="color:#f92672">(</span>&#39;row_id<span style="color:#f92672">.</span>desc<span style="color:#f92672">).</span>show
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+--------------------+-----+-----------+
@@ -336,23 +277,8 @@ only showing top 20 rows
 |       United States|               Haiti|  193|42949673198|
 |       United States|Saint Kitts and N...|  123|42949673197|
 |       United States|       French Guiana|    4|42949673196|
-|        Cook Islands|       United States|   12|42949673195|
-|             Uruguay|       United States|   60|42949673194|
-|       United States|             Bolivia|   14|42949673193|
-|       United States| Trinidad and Tobago|  175|42949673192|
-|       United States|              Jordan|   64|42949673191|
-|       United States|      Cayman Islands|  278|42949673190|
-|           Australia|       United States|  293|42949673189|
-|       United States|            Barbados|   89|42949673188|
-|       United States|            Colombia|  888|42949673187|
-|       United States|               Qatar|   96|42949673186|
-|       United States|                Cuba|  419|42949673185|
-|       United States|             Bermuda|  190|42949673184|
-|               Chile|       United States|  156|42949673183|
-|           Greenland|       United States|    2|42949673182|
-|       United States|             Uruguay|   18|42949673181|
 +--------------------+--------------------+-----+-----------+
-only showing top 20 rows
+only showing top 5 rows
 </code></pre></div><p>The <code>row_id</code> is way bigger than the total count of this dataset (which is 1 502 rows), and that is because the id generated by <code>monotonically_increatsing_id()</code> is (bitwise) composed of two parts:
 <img src="monotonically_increasing_id.jpg" alt=""></p>
 <h4 id="step-2">Step 2</h4>
@@ -367,13 +293,8 @@ only showing top 20 rows
 |    United States|              India|   69|     2|           0|         2|
 |            Egypt|      United States|   24|     3|           0|         3|
 |Equatorial Guinea|      United States|    1|     4|           0|         4|
-|    United States|          Singapore|   25|     5|           0|         5|
-|    United States|            Grenada|   54|     6|           0|         6|
-|       Costa Rica|      United States|  477|     7|           0|         7|
-|          Senegal|      United States|   29|     8|           0|         8|
-|    United States|   Marshall Islands|   44|     9|           0|         9|
 +-----------------+-------------------+-----+------+------------+----------+
-only showing top 10 rows
+only showing top 5 rows
 </code></pre></div><ul>
 <li><code>shiftRight</code>: is used to extract the partition id, by shifting the id by 33 bits to the right (equivalent to the <code>&gt;&gt;</code> operator).</li>
 <li><code>bitwiseAnd</code>: is used to isolate the row offset by applying a bit mask (<code>1111111111111111111111111111111</code>) that zeroes the upper 31 bits and keeps the 33 lower bits. If you wonder where does this number (<code>2147483647</code>) come from, it just the decimal representation of the mask.</li>
@@ -436,31 +357,16 @@ only showing top 10 rows
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df4 <span style="color:#66d9ef">=</span> df3<span style="color:#f92672">.</span>join<span style="color:#f92672">(</span>broadcast<span style="color:#f92672">(</span>partitions_offset<span style="color:#f92672">),</span> <span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">)</span>
              <span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_num&#34;</span><span style="color:#f92672">,</span> &#39;partition_offset<span style="color:#f92672">+</span>&#39;row_offset<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span>
              <span style="color:#f92672">.</span>drop<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;row_id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;row_offset&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;partition_size&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;partition_offset&#34;</span><span style="color:#f92672">)</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+-------+
-|   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
-+--------------------+-------------------+-----+-------+
-|       United States|            Romania|    1|      1|
-|       United States|            Ireland|  264|      2|
-|       United States|              India|   69|      3|
-|               Egypt|      United States|   24|      4|
-|   Equatorial Guinea|      United States|    1|      5|
-|       United States|          Singapore|   25|      6|
-|       United States|            Grenada|   54|      7|
-|          Costa Rica|      United States|  477|      8|
-|             Senegal|      United States|   29|      9|
-|       United States|   Marshall Islands|   44|     10|
-|              Guyana|      United States|   17|     11|
-|       United States|       Sint Maarten|   53|     12|
-|               Malta|      United States|    1|     13|
-|             Bolivia|      United States|   46|     14|
-|            Anguilla|      United States|   21|     15|
-|Turks and Caicos ...|      United States|  136|     16|
-|       United States|        Afghanistan|    2|     17|
-|Saint Vincent and...|      United States|    1|     18|
-|               Italy|      United States|  390|     19|
-|       United States|             Russia|  156|     20|
-+--------------------+-------------------+-----+-------+
-only showing top 20 rows
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+-----------------+-------------------+-----+-------+
+|DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
++-----------------+-------------------+-----+-------+
+|    United States|            Romania|    1|      1|
+|    United States|            Ireland|  264|      2|
+|    United States|              India|   69|      3|
+|            Egypt|      United States|   24|      4|
+|Equatorial Guinea|      United States|    1|      5|
++-----------------+-------------------+-----+-------+
+only showing top 5 rows
 </code></pre></div><ul>
 <li><code>broadcast</code>: before joining, we added a broadcast hint so that the <code>partitions_offset</code> dataframe gets broadcasted through the Spark cluster to avoid shuffles.</li>
 <li>We needed to adjust the calculation by adding 1 to the offsets so that <code>row_num</code> starts from 1.</li>

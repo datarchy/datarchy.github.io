@@ -18,7 +18,7 @@
       <guid>https://www.datarchy.tech/code/20200820_spark_rows_number/</guid>
       <description>In this tutorial, we will explore a couple of ways to add a sequential consecutive row number to a dataframe.
 For example, let this be our dataframe (taken from Spark: The Definitive Guide github repo):
-val df = spark.read.option(&amp;#34;header&amp;#34;, &amp;#34;true&amp;#34;).csv(&amp;#34;.../data/flight-data/csv/*&amp;#34;) +--------------------+-------------------+-----+ | DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count| +--------------------+-------------------+-----+ | United States| Romania| 1| | United States| Ireland| 264| | United States| India| 69| | Egypt| United States| 24| | Equatorial Guinea| United States| 1| | United States| Singapore| 25| | United States| Grenada| 54| | Costa Rica| United States| 477| | Senegal| United States| 29| | United States| Marshall Islands| 44| | Guyana| United States| 17| | United States| Sint Maarten| 53| | Malta| United States| 1| | Bolivia| United States| 46| | Anguilla| United States| 21| |Turks and Caicos .</description>
+val df = spark.read.option(&amp;#34;header&amp;#34;, &amp;#34;true&amp;#34;).csv(&amp;#34;.../data/flight-data/csv/*&amp;#34;) +-----------------+-------------------+-----+ |DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count| +-----------------+-------------------+-----+ | United States| Romania| 1| | United States| Ireland| 264| | United States| India| 69| | Egypt| United States| 24| |Equatorial Guinea| United States| 1| +-----------------+-------------------+-----+ only showing top 5 rows After adding a column containing the row number, the result should look like:</description>
     </item>
     
   </channel>
