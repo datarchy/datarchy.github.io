@@ -1,0 +1,45 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Programmers</title>
+    <link>https://www.datarchy.tech/</link>
+    <description>Recent content on Data Programmers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0100</lastBuildDate>
+    
+        <atom:link href="https://www.datarchy.tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spark Dataframe: How to add row numbers to a dataframe?</title>
+      <link>https://www.datarchy.tech/code/20200820_spark_rows_number/</link>
+      <pubDate>Thu, 20 Aug 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://www.datarchy.tech/code/20200820_spark_rows_number/</guid>
+      <description>In this tutorial, we will explore a couple of ways to add a sequential consecutive row number to a dataframe.
+For example, let this be our dataframe (taken from Spark: The Definitive Guide github repo):
+val df = spark.read.option(&amp;#34;header&amp;#34;, &amp;#34;true&amp;#34;).csv(&amp;#34;.../data/flight-data/csv/*&amp;#34;) +--------------------+-------------------+-----+ | DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count| +--------------------+-------------------+-----+ | United States| Romania| 1| | United States| Ireland| 264| | United States| India| 69| | Egypt| United States| 24| | Equatorial Guinea| United States| 1| | United States| Singapore| 25| | United States| Grenada| 54| | Costa Rica| United States| 477| | Senegal| United States| 29| | United States| Marshall Islands| 44| | Guyana| United States| 17| | United States| Sint Maarten| 53| | Malta| United States| 1| | Bolivia| United States| 46| | Anguilla| United States| 21| |Turks and Caicos .</description>
+    </item>
+    
+    <item>
+      <title>Spark DataFrame - two ways to count the number of rows per partition</title>
+      <link>https://www.datarchy.tech/article/20200814_spark_count_per_partition/</link>
+      <pubDate>Sat, 15 Aug 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://www.datarchy.tech/article/20200814_spark_count_per_partition/</guid>
+      <description>Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways:
+  The first way is using Dataframe.mapPartitions().
+  The second way (the faster according to my observations) is using the spark_partition_id() function, followed by a grouping count aggregation.
+  Let&amp;rsquo;s first load the data into a dataframe I have used the SF Bay Area Bike data source, that can be found here</description>
+    </item>
+    
+    <item>
+      <title>Mark Twin</title>
+      <link>https://www.datarchy.tech/quote/20200814_mark_twin_getting_started/</link>
+      <pubDate>Thu, 13 Aug 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://www.datarchy.tech/quote/20200814_mark_twin_getting_started/</guid>
+      <description>“The secret to getting ahead is getting started.”</description>
+    </item>
+    
+  </channel>
+</rss>

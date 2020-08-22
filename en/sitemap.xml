@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://www.datarchy.tech/categories/apache-spark/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/author/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/author/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/author/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/categories/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/code/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/tags/spark/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/tags/spark-dataframe/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/code/20200820_spark_rows_number/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/tags/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/categories/tutorial/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/author/wissem-belguidoum/</loc>
+    <lastmod>2020-08-20T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/article/</loc>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/tags/dataframe/</loc>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/article/20200814_spark_count_per_partition/</loc>
+    <lastmod>2020-08-15T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/author/mark-twain/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/author/mark-twain/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/author/mark-twain/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/quote/20200814_mark_twin_getting_started/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/quote/20200814_mark_twin_getting_started/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/quote/20200814_mark_twin_getting_started/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/categories/motivation/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/categories/motivation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/categories/motivation/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/quote/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/quote/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/quote/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/tags/start-now/</loc>
+    <lastmod>2020-08-13T00:00:00+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/tags/start-now/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/tags/start-now/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/page/about/</loc>
+    <lastmod>2017-11-01T13:18:45+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/page/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/page/about/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/page/</loc>
+    <lastmod>2017-11-01T13:18:45+01:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://www.datarchy.tech/fr/page/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.datarchy.tech/page/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.datarchy.tech/gallery/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

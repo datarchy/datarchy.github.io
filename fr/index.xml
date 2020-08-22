@@ -1,0 +1,22 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Programmers</title>
+    <link>https://www.datarchy.tech/fr/</link>
+    <description>Recent content on Data Programmers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 13 Aug 2020 00:00:00 +0100</lastBuildDate>
+    
+        <atom:link href="https://www.datarchy.tech/fr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mark Twin</title>
+      <link>https://www.datarchy.tech/fr/quote/20200814_mark_twin_getting_started/</link>
+      <pubDate>Thu, 13 Aug 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://www.datarchy.tech/fr/quote/20200814_mark_twin_getting_started/</guid>
+      <description>“Le secret pour avancer, c’est de commencer.”</description>
+    </item>
+    
+  </channel>
+</rss>

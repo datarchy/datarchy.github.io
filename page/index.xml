@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Data Programmers</title>
+    <link>https://www.datarchy.tech/page/</link>
+    <description>Recent content in Pages on Data Programmers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 01 Nov 2017 13:18:45 +0100</lastBuildDate>
+    
+	<atom:link href="https://www.datarchy.tech/page/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello !</title>
+      <link>https://www.datarchy.tech/page/about/</link>
+      <pubDate>Wed, 01 Nov 2017 13:18:45 +0100</pubDate>
+      
+      <guid>https://www.datarchy.tech/page/about/</guid>
+      <description>Thank you for your visit,
+I&amp;rsquo;ve created this blog to keep track and share every bit of knowledge I am learning in my exciting data engineering journey.
+Please feel free to contact me at : wissem@datarchy.tech
+I would be more than happy to connect with you on linkedin : https://www.linkedin.com/in/wbelguidoum/
+See you soon!</description>
+    </item>
+    
+  </channel>
+</rss>

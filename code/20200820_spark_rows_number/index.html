@@ -1,0 +1,717 @@
+
+  
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="siteBaseUrl" content="https://www.datarchy.tech/">
+    <meta name="author" content="Wissem Belguidoum">
+    <meta name="description" content="Wissem Belguidoum Data Engineer Datarchy">
+    <meta name="keywords" content="blog, apache spark, dataframe, delta architecture, data lake, machine learning, data pipline, stream processing, apache flink, apache hadoop, data engineering, data engineer">
+    <meta name="generator" content="Hugo 0.69.0" />
+    <title>
+        
+           
+               Spark Dataframe: How to add row numbers to a dataframe? &vert; Data Programmers
+           
+        
+    </title>
+    <meta name="description" content="Spark Dataframe: How to add row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
+    <meta itemprop="name" content="Spark Dataframe: How to add row numbers to a dataframe?">
+    <meta itemprop="description" content="Spark Dataframe: How to add row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
+    <meta property="og:title" content="Spark Dataframe: How to add row numbers to a dataframe?">
+    <meta property="og:description" content="Spark Dataframe: How to add row numbers to a dataframe? - Wissem Belguidoum Data Engineer Datarchy">
+    <meta property="og:image" content="https://www.datarchy.tech/Apache_Spark_logo.svg.png">
+    <meta property="og:url" content="https://www.datarchy.tech/code/20200820_spark_rows_number/">
+    <meta property="og:site_name" content="Data Programmers">
+    <meta property="og:type" content="article">
+
+    
+	<link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+	<link rel="manifest" href="/public/site.webmanifest">
+	<link rel="mask-icon" href="/public/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff"> 
+
+    
+    <link href="/code/20200820_spark_rows_number/" rel="alternate" type="application/rss+xml" title="Data Programmers" />
+    <link href="/code/20200820_spark_rows_number/" rel="feed" type="application/rss+xml" title="Data Programmers" />
+    
+
+    
+
+    <link rel="stylesheet" href="https://www.datarchy.tech/theme.css">
+
+    
+
+    
+        
+            <link rel="stylesheet" href="https://www.datarchy.tech/datarchy.css">
+        
+    
+</head>
+
+<body class="bilberry-hugo-theme">
+
+    
+    <nav>
+
+    <div class="container">
+        <ul class="topnav">
+            
+            
+            <li><a href="https://www.datarchy.tech/page/about/">Hello !</a></li>
+            
+            
+        </ul>
+
+        
+    </div>
+</nav>
+
+
+    
+<header>
+
+    <div class="container">
+        <div class="logo">
+            <a href="/" class="logo">
+                
+                <img src="/Transparent_800x800_72dpi.png" alt="">
+                
+
+                <span class="overlay"><i class="fa fa-home"></i></span>
+            </a>
+        </div>
+        <div class="titles">
+            <h3 class="title"><a
+                    href="/">Data Programmers</a></h3>
+            
+            <span class="subtitle">Let&#39;s learn data engineering together!</span>
+            
+        </div>
+
+        <div class="languages">
+        
+            
+                <a href="https://www.datarchy.tech/" class="active">en</a>
+            
+        
+            
+                <a href="https://www.datarchy.tech/fr/">fr</a>
+            
+        
+        </div>
+        
+
+        
+            <div class="toggler">
+                
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+        </div>
+</header>
+
+
+    <div class="main container">
+        
+    <div class="article-wrapper u-cf single">
+        
+            <a class="bubble" href="https://www.datarchy.tech/code/20200820_spark_rows_number/">
+    <i class="fas fa-fw fa-code"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://www.datarchy.tech/code/20200820_spark_rows_number/">
+            <img src="/Apache_Spark_logo.svg.png" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h1 class="article-title">
+        <a href="https://www.datarchy.tech/code/20200820_spark_rows_number/">
+            Spark Dataframe: How to add row numbers to a dataframe?
+        </a>
+    </h1>
+
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-08-20</span>
+            
+        
+
+        
+
+        
+            <span class="categories">
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/categories/apache-spark/">Apache Spark</a>
+                    
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/categories/tutorial/">Tutorial</a>
+                    
+                
+            </span>
+        
+
+        
+            <span class="author">
+                
+                
+                    <a href="https://www.datarchy.tech/author/wissem-belguidoum/">Wissem Belguidoum</a>
+                
+            </span>
+        
+    </div>
+
+    
+        <p>In this tutorial, we will explore a couple of ways to add a sequential consecutive row number to a dataframe.</p>
+<p>For example, let this be our dataframe (taken from <a href="https://github.com/databricks/Spark-The-Definitive-Guide"><strong>Spark: The Definitive Guide github repo</strong></a>):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df <span style="color:#66d9ef">=</span> spark<span style="color:#f92672">.</span>read<span style="color:#f92672">.</span>option<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;header&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">).</span>csv<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;.../data/flight-data/csv/*&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+
+|   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|
++--------------------+-------------------+-----+
+|       United States|            Romania|    1|
+|       United States|            Ireland|  264|
+|       United States|              India|   69|
+|               Egypt|      United States|   24|
+|   Equatorial Guinea|      United States|    1|
+|       United States|          Singapore|   25|
+|       United States|            Grenada|   54|
+|          Costa Rica|      United States|  477|
+|             Senegal|      United States|   29|
+|       United States|   Marshall Islands|   44|
+|              Guyana|      United States|   17|
+|       United States|       Sint Maarten|   53|
+|               Malta|      United States|    1|
+|             Bolivia|      United States|   46|
+|            Anguilla|      United States|   21|
+|Turks and Caicos ...|      United States|  136|
+|       United States|        Afghanistan|    2|
+|Saint Vincent and...|      United States|    1|
+|               Italy|      United States|  390|
+|       United States|             Russia|  156|
++--------------------+-------------------+-----+
+only showing top 20 rows
+</code></pre></div><p>After adding a column containing the row number, the result should look like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+-------+
+|   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
++--------------------+-------------------+-----+-------+
+|       United States|            Romania|    1|      1|
+|       United States|            Ireland|  264|      2|
+|       United States|              India|   69|      3|
+|               Egypt|      United States|   24|      4|
+|   Equatorial Guinea|      United States|    1|      5|
+|       United States|          Singapore|   25|      6|
+|       United States|            Grenada|   54|      7|
+|          Costa Rica|      United States|  477|      8|
+|             Senegal|      United States|   29|      9|
+|       United States|   Marshall Islands|   44|     10|
+|              Guyana|      United States|   17|     11|
+|       United States|       Sint Maarten|   53|     12|
+|               Malta|      United States|    1|     13|
+|             Bolivia|      United States|   46|     14|
+|            Anguilla|      United States|   21|     15|
+|Turks and Caicos ...|      United States|  136|     16|
+|       United States|        Afghanistan|    2|     17|
+|Saint Vincent and...|      United States|    1|     18|
+|               Italy|      United States|  390|     19|
+|       United States|             Russia|  156|     20|
++--------------------+-------------------+-----+-------+
+</code></pre></div><ul>
+<li><code>row_num</code> will contain a sequential consecutive row number that will cover the whole dataframe.</li>
+</ul>
+<h2 id="the-ugly-way-using-window-functions">The Ugly Way: Using Window functions</h2>
+<hr>
+<p>Starting from Spark 1.4, a new feature called Window functions has been introduced to Spark SQL (see <a href="https://databricks.com/fr/blog/2015/07/15/introducing-window-functions-in-spark-sql.html"><strong>Databricks blog post</strong></a>). This feature allows to apply aggregations over a dataframe, while returning an output with the same number of rows as the input (unlike grouping aggregations).</p>
+<p>Using window functions can be a straightforward way to add sequential consecutive row numbers to a dataframe, by using a specific window function called .. <code>row_number()</code>.</p>
+<p>This can be done in two steps:</p>
+<h4 id="step-1-define-a-window-specification">Step 1: define a window specification</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">import</span> org.apache.spark.sql.expressions.Window 
+
+<span style="color:#66d9ef">val</span> windSpec <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Window</span><span style="color:#f92672">.</span>partitionBy<span style="color:#f92672">(</span>lit<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">))</span>
+                     <span style="color:#f92672">.</span>orderBy<span style="color:#f92672">(</span>monotonically_increasing_id<span style="color:#f92672">())</span>
+
+</code></pre></div><p>In our window specification we answered two questions:</p>
+<ul>
+<li>How to partition the data (<code>partitionBy</code>): In order to have a consecutive and sequential row id that covers the entire dataframe, we need to partition in a way that all the data ends up in one single partition (and this is why it is ugly!).</li>
+<li>How to order elements inside the same partition (<code>orderBy</code>): So as to preserve the natural order, we will sort the dataframe using <code>monotonically_increasing_id()</code>. This function generates an ordered and unique but not consecutive row id (we will see more about this function in the next section).</li>
+</ul>
+<h4 id="step-2-apply-row_number-to-the-dataframe-using-the-window-specification-that-we-have-defined-in-step-1">Step 2: apply <code>row_number()</code> to the dataframe using the window specification that we have defined in Step 1</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df2 <span style="color:#66d9ef">=</span> df<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_num&#34;</span><span style="color:#f92672">,</span> row_number<span style="color:#f92672">().</span>over<span style="color:#f92672">(</span>windSpec<span style="color:#f92672">))</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+-------+
+|   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
++--------------------+-------------------+-----+-------+
+|       United States|            Romania|    1|      1|
+|       United States|            Ireland|  264|      2|
+|       United States|              India|   69|      3|
+|               Egypt|      United States|   24|      4|
+|   Equatorial Guinea|      United States|    1|      5|
+|       United States|          Singapore|   25|      6|
+|       United States|            Grenada|   54|      7|
+|          Costa Rica|      United States|  477|      8|
+|             Senegal|      United States|   29|      9|
+|       United States|   Marshall Islands|   44|     10|
+|              Guyana|      United States|   17|     11|
+|       United States|       Sint Maarten|   53|     12|
+|               Malta|      United States|    1|     13|
+|             Bolivia|      United States|   46|     14|
+|            Anguilla|      United States|   21|     15|
+|Turks and Caicos ...|      United States|  136|     16|
+|       United States|        Afghanistan|    2|     17|
+|Saint Vincent and...|      United States|    1|     18|
+|               Italy|      United States|  390|     19|
+|       United States|             Russia|  156|     20|
++--------------------+-------------------+-----+-------+
+only showing top 20 rows
+</code></pre></div><p>Done!</p>
+<p>Now, we have a column containing a consecutive row number. However, if we take a closer look at the result, and show the first and the last row, along with the partition id, we will observe this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df3 <span style="color:#66d9ef">=</span> df2<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">,</span> spark_partition_id<span style="color:#f92672">()).</span>filter<span style="color:#f92672">(</span>expr<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_num in (1, 1502)&#34;</span><span style="color:#f92672">))</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+-----------------+-------------------+-----+-------+------------+
+|DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|partition_id|
++-----------------+-------------------+-----+-------+------------+
+|    United States|            Romania|    1|      1|         191|
+|           Greece|      United States|   20|   1502|         191|
++-----------------+-------------------+-----+-------+------------+
+</code></pre></div><p>As I said before, this method requires to group all the data in one single partition (here the chosen partition was n° 191).</p>
+<p>This constraint takes away one of the major benefits of Spark, namely, the parallel computation. Because, only one task will be (sequentially) executed in order to compute the row number.</p>
+<p>In the next section, we will try explore another way which is a little bit longer, but which tries to take more advantage of the parallel and distributed computation offered by Spark</p>
+<h2 id="the-other-way">The Other Way</h2>
+<hr>
+<p>In this method, we will associate each row with its offset in the partition, and then, we will compute a global offset for each partition, and finally we will add up the two offsets to get the row number.</p>
+<p>This can be done in 4 steps:</p>
+<h4 id="step-1">Step 1</h4>
+<p>Similar to the last section, we will use the <code>monotonically_increasing_id()</code> function to associate a unique identifier to each row. Let’s call it <code>row_id</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df2 <span style="color:#66d9ef">=</span> df<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_id&#34;</span><span style="color:#f92672">,</span> monotonically_increasing_id<span style="color:#f92672">())</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+------+
+|   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_id|
++--------------------+-------------------+-----+------+
+|       United States|            Romania|    1|     0|
+|       United States|            Ireland|  264|     1|
+|       United States|              India|   69|     2|
+|               Egypt|      United States|   24|     3|
+|   Equatorial Guinea|      United States|    1|     4|
+|       United States|          Singapore|   25|     5|
+|       United States|            Grenada|   54|     6|
+|          Costa Rica|      United States|  477|     7|
+|             Senegal|      United States|   29|     8|
+|       United States|   Marshall Islands|   44|     9|
+|              Guyana|      United States|   17|    10|
+|       United States|       Sint Maarten|   53|    11|
+|               Malta|      United States|    1|    12|
+|             Bolivia|      United States|   46|    13|
+|            Anguilla|      United States|   21|    14|
+|Turks and Caicos ...|      United States|  136|    15|
+|       United States|        Afghanistan|    2|    16|
+|Saint Vincent and...|      United States|    1|    17|
+|               Italy|      United States|  390|    18|
+|       United States|             Russia|  156|    19|
++--------------------+-------------------+-----+------+
+only showing top 20 rows
+</code></pre></div><p>At the first sight, the result looks almost like what we are looking for, but it is not really:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">df2<span style="color:#f92672">.</span>orderBy<span style="color:#f92672">(</span>&#39;row_id<span style="color:#f92672">.</span>desc<span style="color:#f92672">).</span>show
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+--------------------+-----+-----------+
+|   DEST_COUNTRY_NAME| ORIGIN_COUNTRY_NAME|count|     row_id|
++--------------------+--------------------+-----+-----------+
+|              Greece|       United States|   20|42949673200|
+|Bonaire, Sint Eus...|       United States|   62|42949673199|
+|       United States|               Haiti|  193|42949673198|
+|       United States|Saint Kitts and N...|  123|42949673197|
+|       United States|       French Guiana|    4|42949673196|
+|        Cook Islands|       United States|   12|42949673195|
+|             Uruguay|       United States|   60|42949673194|
+|       United States|             Bolivia|   14|42949673193|
+|       United States| Trinidad and Tobago|  175|42949673192|
+|       United States|              Jordan|   64|42949673191|
+|       United States|      Cayman Islands|  278|42949673190|
+|           Australia|       United States|  293|42949673189|
+|       United States|            Barbados|   89|42949673188|
+|       United States|            Colombia|  888|42949673187|
+|       United States|               Qatar|   96|42949673186|
+|       United States|                Cuba|  419|42949673185|
+|       United States|             Bermuda|  190|42949673184|
+|               Chile|       United States|  156|42949673183|
+|           Greenland|       United States|    2|42949673182|
+|       United States|             Uruguay|   18|42949673181|
++--------------------+--------------------+-----+-----------+
+only showing top 20 rows
+</code></pre></div><p>The <code>row_id</code> is way bigger than the total count of this dataset (which is 1 502 rows), and that is because the id generated by <code>monotonically_increatsing_id()</code> is (bitwise) composed of two parts:
+<img src="monotonically_increasing_id.jpg" alt=""></p>
+<h4 id="step-2">Step 2</h4>
+<p>Let’s separate the two parts into two different columns:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df3 <span style="color:#66d9ef">=</span> df2<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">,</span> shiftRight<span style="color:#f92672">(</span>&#39;row_id<span style="color:#f92672">,</span><span style="color:#ae81ff">33</span><span style="color:#f92672">))</span>
+             <span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_offset&#34;</span><span style="color:#f92672">,</span> &#39;row_id<span style="color:#f92672">.</span>bitwiseAND<span style="color:#f92672">(</span><span style="color:#ae81ff">2147483647</span><span style="color:#f92672">))</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+-----------------+-------------------+-----+------+------------+----------+
+|DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_id|partition_id|row_offset|
++-----------------+-------------------+-----+------+------------+----------+
+|    United States|            Romania|    1|     0|           0|         0|
+|    United States|            Ireland|  264|     1|           0|         1|
+|    United States|              India|   69|     2|           0|         2|
+|            Egypt|      United States|   24|     3|           0|         3|
+|Equatorial Guinea|      United States|    1|     4|           0|         4|
+|    United States|          Singapore|   25|     5|           0|         5|
+|    United States|            Grenada|   54|     6|           0|         6|
+|       Costa Rica|      United States|  477|     7|           0|         7|
+|          Senegal|      United States|   29|     8|           0|         8|
+|    United States|   Marshall Islands|   44|     9|           0|         9|
++-----------------+-------------------+-----+------+------------+----------+
+only showing top 10 rows
+</code></pre></div><ul>
+<li><code>shiftRight</code>: is used to extract the partition id, by shifting the id by 33 bits to the right (equivalent to the <code>&gt;&gt;</code> operator).</li>
+<li><code>bitwiseAnd</code>: is used to isolate the row offset by applying a bit mask (<code>1111111111111111111111111111111</code>) that zeroes the upper 31 bits and keeps the 33 lower bits. If you wonder where does this number (<code>2147483647</code>) come from, it just the decimal representation of the mask.</li>
+</ul>
+<h4 id="step-3">Step 3</h4>
+<p>Now that we have calculated a local offset for each row, in the next step, we will calculate the global offset for each partition. Let&rsquo;s start by calculating the size of each partition:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> partitions_size <span style="color:#66d9ef">=</span> df3<span style="color:#f92672">.</span>groupBy<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">)</span>
+                         <span style="color:#f92672">.</span>count<span style="color:#f92672">()</span>
+                         <span style="color:#f92672">.</span>withColumnRenamed<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;count&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;partition_size&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+------------+--------------+
+|partition_id|partition_size|
++------------+--------------+
+|           0|           254|
+|           5|           240|
+|           1|           255|
+|           3|           249|
+|           2|           254|
+|           4|           244|
++------------+--------------+
+</code></pre></div><p>At this point, we have calculated the size of each partition (the number of rows per partition). In order to calculate the global offset of each partition, we will do an aggregation over a window specification, so that we compute for each partition the sum of sizes of its preceding partitions:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">import</span> org.apache.spark.sql.expressions.Window
+
+<span style="color:#66d9ef">val</span> windowSpec <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Window</span><span style="color:#f92672">.</span>orderBy<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">)</span>
+                       <span style="color:#f92672">.</span>rowsBetween<span style="color:#f92672">(</span><span style="color:#a6e22e">Window</span><span style="color:#f92672">.</span>unboundedPreceding<span style="color:#f92672">,</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span>
+
+<span style="color:#66d9ef">val</span> partitions_offset <span style="color:#66d9ef">=</span> partitions_size<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_offset&#34;</span><span style="color:#f92672">,</span> sum<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_size&#34;</span><span style="color:#f92672">).</span>over<span style="color:#f92672">(</span>windowSpec<span style="color:#f92672">))</span>
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+------------+--------------+----------------+                                  
+|partition_id|partition_size|partition_offset|
++------------+--------------+----------------+
+|           0|           254|            null|
+|           1|           255|             254|
+|           2|           254|             509|
+|           3|           249|             763|
+|           4|           244|            1012|
+|           5|           240|            1256|
++------------+--------------+----------------+
+</code></pre></div><ul>
+<li><code>rowsBetween</code>: in the last section we have seen that a window specification answered two questions: how to partition the data and how to order the data. There is a third question that can be answered: how to frame the data i.e, which rows will be aggregated together in order to compute the current row?</li>
+<li>In our case, we used <code>rowsBetween(Window.unboundedPreceding, -1)</code> to indicate that for the current row, we need to aggregate all the preceding rows.</li>
+<li><code>orderBy</code>: this we have already seen, it will define how to order the rows.</li>
+</ul>
+<p>We are almost there! We need to take care of the partition n°0, by setting its offset to 0.</p>
+<p>To do so, we will use a conditional column definition (<strong>when(</strong>&lt;condition&gt;, &lt;column definition 1&gt; <strong>).otherwise(</strong>&lt;column definition 2&gt; <strong>)</strong>):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> partitions_offset <span style="color:#66d9ef">=</span> partitions_size<span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_offset&#34;</span><span style="color:#f92672">,</span> 
+                when<span style="color:#f92672">(</span>expr<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id = 0&#34;</span><span style="color:#f92672">),</span> lit<span style="color:#f92672">(</span><span style="color:#ae81ff">0</span><span style="color:#f92672">))</span>
+                <span style="color:#f92672">.</span>otherwise<span style="color:#f92672">(</span>sum<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_size&#34;</span><span style="color:#f92672">).</span>over<span style="color:#f92672">(</span>windowSpec<span style="color:#f92672">)))</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+------------+--------------+----------------+
+|partition_id|partition_size|partition_offset|
++------------+--------------+----------------+
+|           0|           254|               0|
+|           1|           255|             254|
+|           2|           254|             509|
+|           3|           249|             763|
+|           4|           244|            1012|
+|           5|           240|            1256|
++------------+--------------+----------------+
+</code></pre></div><h4 id="step-4">Step 4</h4>
+<p>From this point, computing the row number can be done by adding the row offset to the partition offset. That is why we firstly need to join the main dataframe with the <code>partitions_offset</code> dataframe that we calculated in Step 3:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df4 <span style="color:#66d9ef">=</span> df3<span style="color:#f92672">.</span>join<span style="color:#f92672">(</span>broadcast<span style="color:#f92672">(</span>partitions_offset<span style="color:#f92672">),</span> <span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">)</span>
+             <span style="color:#f92672">.</span>withColumn<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;row_num&#34;</span><span style="color:#f92672">,</span> &#39;partition_offset<span style="color:#f92672">+</span>&#39;row_offset<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">)</span>
+             <span style="color:#f92672">.</span>drop<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;partition_id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;row_id&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;row_offset&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;partition_size&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;partition_offset&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">+--------------------+-------------------+-----+-------+
+|   DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count|row_num|
++--------------------+-------------------+-----+-------+
+|       United States|            Romania|    1|      1|
+|       United States|            Ireland|  264|      2|
+|       United States|              India|   69|      3|
+|               Egypt|      United States|   24|      4|
+|   Equatorial Guinea|      United States|    1|      5|
+|       United States|          Singapore|   25|      6|
+|       United States|            Grenada|   54|      7|
+|          Costa Rica|      United States|  477|      8|
+|             Senegal|      United States|   29|      9|
+|       United States|   Marshall Islands|   44|     10|
+|              Guyana|      United States|   17|     11|
+|       United States|       Sint Maarten|   53|     12|
+|               Malta|      United States|    1|     13|
+|             Bolivia|      United States|   46|     14|
+|            Anguilla|      United States|   21|     15|
+|Turks and Caicos ...|      United States|  136|     16|
+|       United States|        Afghanistan|    2|     17|
+|Saint Vincent and...|      United States|    1|     18|
+|               Italy|      United States|  390|     19|
+|       United States|             Russia|  156|     20|
++--------------------+-------------------+-----+-------+
+only showing top 20 rows
+</code></pre></div><ul>
+<li><code>broadcast</code>: before joining, we added a broadcast hint so that the <code>partitions_offset</code> dataframe gets broadcasted through the Spark cluster to avoid shuffles.</li>
+<li>We needed to adjust the calculation by adding 1 to the offsets so that <code>row_num</code> starts from 1.</li>
+<li>We used <code>drop()</code> to clean out the intermediary columns.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial, we explored two different ways to add a sequential consecutive row numbers to a dataframe. The first one does not use the parallelism that Spark offers. While the second one tries to parallelize the computation.</p>
+<p>I’ve made some comparisons of execution times using 9 datasets with different numbers of rows. I run my tests on a local setting (8 cores).</p>
+<p>The numbers talk for themselves:</p>
+<table>
+<thead>
+<tr>
+<th>Rows number</th>
+<th>Method 1 (in seconds)</th>
+<th>Method 2 (in seconds)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>669 960</td>
+<td>8,5</td>
+<td>1,6</td>
+</tr>
+<tr>
+<td>1 339 920</td>
+<td>14</td>
+<td>1,7</td>
+</tr>
+<tr>
+<td>2 009 880</td>
+<td>19</td>
+<td>2,6</td>
+</tr>
+<tr>
+<td>2 679 840</td>
+<td>26</td>
+<td>2,7</td>
+</tr>
+<tr>
+<td>3 349 800</td>
+<td>32</td>
+<td>3,8</td>
+</tr>
+<tr>
+<td>4 019 760</td>
+<td>38</td>
+<td>3,8</td>
+</tr>
+<tr>
+<td>4 689 720</td>
+<td>46</td>
+<td>3,9</td>
+</tr>
+<tr>
+<td>5 359 680</td>
+<td>51</td>
+<td>5</td>
+</tr>
+<tr>
+<td>10 719 360</td>
+<td>97</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>Unsurprisingly, the first method does not scale, and the processing time adds up due to the sequential execution. Here&rsquo;s a chart with the same data:
+<img src="chart.png" alt=""></p>
+<p>Thank you for reading this tutorial.. Please don’t hesitate to share your insight in the comment section :)</p>
+
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/tags/spark/">Spark</a>
+                    
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/tags/spark-dataframe/">Spark DataFrame</a>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+    
+        <div id="comments-container">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-www-datarchy-tech" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            
+
+        </div>
+    
+
+    </div>
+
+    
+<footer>
+    <div class="container">
+
+        
+        <div class="recent-posts">
+            <strong>Latest posts</strong>
+            <ul>
+                
+                <li>
+                    <a href="https://www.datarchy.tech/code/20200820_spark_rows_number/">Spark Dataframe: How to add row numbers to a dataframe?</a>
+                </li>
+                
+                <li>
+                    <a href="https://www.datarchy.tech/article/20200814_spark_count_per_partition/">Spark DataFrame - two ways to count the number of rows per partition</a>
+                </li>
+                
+                <li>
+                    <a href="https://www.datarchy.tech/quote/20200814_mark_twin_getting_started/">Mark Twin</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+
+        
+        <div class="categories">
+            <a href="/categories/"><strong>Categories</strong></a>
+            <ul>
+                
+                <li>
+                    <a href="/categories/apache-spark">Apache spark
+                        (2)</a>
+                </li>
+                
+                <li>
+                    <a href="/categories/tutorial">Tutorial
+                        (2)</a>
+                </li>
+                
+                <li>
+                    <a href="/categories/motivation">Motivation
+                        (1)</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+
+        <div class="right">
+            
+            <div class="external-profiles">
+                <strong>Social media</strong>
+
+                
+                <a href="https://www.linkedin.com/company/datarchy" target="_blank"><i class="fab fa-linkedin"></i></a>
+                
+                <a href="https://github.com/datarchy" target="_blank"><i class="fab fa-github"></i></a>
+                
+            </div>
+            
+
+            <div class="languages">
+                <strong>Other languages</strong>
+                
+                
+                <a href="https://www.datarchy.tech/" class="active">en</a>
+                
+                
+                
+                <a href="https://www.datarchy.tech/fr/">fr</a>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+
+<div class="credits">
+    <div class="container">
+        <div class="copyright">
+            <a href="https://github.com/datarchy" target="_blank">
+                &copy;
+                
+                2020
+                
+                by Datarchy
+            </a>
+            
+        </div>
+        <div class="author">
+            <a href="https://github.com/Lednerb/bilberry-hugo-theme"
+                target="_blank"> </a>
+        </div>
+    </div>
+</div>
+
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-175071430-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    
+
+
+    <script type="text/javascript" src="https://www.datarchy.tech/theme.js"></script>
+
+    
+    
+    
+
+    
+
+
+</body>
+
+</html>

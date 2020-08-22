@@ -14,18 +14,19 @@
     <title>
         
            
-               Let&#39;s learn data engineering together! &vert; Data Programmers
+               Spark DataFrame - two ways to count the number of rows per partition &vert; Data Programmers
            
         
     </title>
-    <meta name="description" content="Wissem Belguidoum Data Engineer Datarchy">
-    <meta itemprop="name" content="Let&#39;s learn data engineering together!">
-    <meta itemprop="description" content="Wissem Belguidoum Data Engineer Datarchy">
-    <meta property="og:title" content="Let&#39;s learn data engineering together!">
-    <meta property="og:description" content="Wissem Belguidoum Data Engineer Datarchy">
-    <meta property="og:image" content="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?size=200">
-    <meta property="og:url" content="https://www.datarchy.tech/">
-    <meta property="og:site_name" content="Data Programmers"><meta property="og:type" content="website">
+    <meta name="description" content="Spark DataFrame - two ways to count the number of rows per partition - Wissem Belguidoum Data Engineer Datarchy">
+    <meta itemprop="name" content="Spark DataFrame - two ways to count the number of rows per partition">
+    <meta itemprop="description" content="Spark DataFrame - two ways to count the number of rows per partition - Wissem Belguidoum Data Engineer Datarchy">
+    <meta property="og:title" content="Spark DataFrame - two ways to count the number of rows per partition">
+    <meta property="og:description" content="Spark DataFrame - two ways to count the number of rows per partition - Wissem Belguidoum Data Engineer Datarchy">
+    <meta property="og:image" content="https://www.datarchy.tech/Apache_Spark_logo.svg.png">
+    <meta property="og:url" content="https://www.datarchy.tech/article/20200814_spark_count_per_partition/">
+    <meta property="og:site_name" content="Data Programmers">
+    <meta property="og:type" content="article">
 
     
 	<link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
@@ -37,8 +38,8 @@
 	<meta name="theme-color" content="#ffffff"> 
 
     
-    <link href="/" rel="alternate" type="application/rss+xml" title="Data Programmers" />
-    <link href="/" rel="feed" type="application/rss+xml" title="Data Programmers" />
+    <link href="/article/20200814_spark_count_per_partition/" rel="alternate" type="application/rss+xml" title="Data Programmers" />
+    <link href="/article/20200814_spark_count_per_partition/" rel="feed" type="application/rss+xml" title="Data Programmers" />
     
 
     
@@ -118,117 +119,7 @@
 
     <div class="main container">
         
-
-
-
-
-    
-
-    
-        
-    <div class="article-wrapper u-cf">
-        
-            <a class="bubble" href="https://www.datarchy.tech/code/20200820_spark_rows_number/">
-    <i class="fas fa-fw fa-code"></i>
-</a>
-
-<article class="default article">
-    
-    <div class="featured-image">
-        <a href="https://www.datarchy.tech/code/20200820_spark_rows_number/">
-            <img src="/Apache_Spark_logo.svg.png" alt="">
-        </a>
-    </div>
-
-
-    <div class="content">
-    <h1 class="article-title">
-        <a href="https://www.datarchy.tech/code/20200820_spark_rows_number/">
-            Spark Dataframe: How to add row numbers to a dataframe?
-        </a>
-    </h1>
-
-    <div class="meta">
-        
-            
-                <span class="date moment">2020-08-20</span>
-            
-        
-
-        
-
-        
-            <span class="categories">
-                
-                    
-                    
-                        <a href="https://www.datarchy.tech/categories/apache-spark/">Apache Spark</a>
-                    
-                
-                    
-                    
-                        <a href="https://www.datarchy.tech/categories/tutorial/">Tutorial</a>
-                    
-                
-            </span>
-        
-
-        
-            <span class="author">
-                
-                
-                    <a href="https://www.datarchy.tech/author/wissem-belguidoum/">Wissem Belguidoum</a>
-                
-            </span>
-        
-    </div>
-
-    
-        In this tutorial, we will explore a couple of ways to add a sequential consecutive row number to a dataframe.
-For example, let this be our dataframe (taken from Spark: The Definitive Guide github repo):
-val df = spark.read.option(&#34;header&#34;, &#34;true&#34;).csv(&#34;.../data/flight-data/csv/*&#34;) +--------------------+-------------------+-----+ | DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count| +--------------------+-------------------+-----+ | United States| Romania| 1| | United States| Ireland| 264| | United States| India| 69| | Egypt| United States| 24| | Equatorial Guinea| United States| 1| | United States| Singapore| 25| | United States| Grenada| 54| | Costa Rica| United States| 477| | Senegal| United States| 29| | United States| Marshall Islands| 44| | Guyana| United States| 17| | United States| Sint Maarten| 53| | Malta| United States| 1| | Bolivia| United States| 46| | Anguilla| United States| 21| |Turks and Caicos .
-
-        
-            <a href="https://www.datarchy.tech/code/20200820_spark_rows_number/" class="more">Continue reading</a>
-        
-    
-</div>
-
-    
-<div class="footer">
-
-
-    
-        <div class="tags">
-            <i class="fa fa-tags"></i>
-            <div class="links">
-                
-                    
-                    
-                    <a href="https://www.datarchy.tech/tags/spark/">Spark</a>
-                    
-                
-                    
-                    
-                    <a href="https://www.datarchy.tech/tags/spark-dataframe/">Spark DataFrame</a>
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-</article>
-
-        
-    </div>
-
-
-    
-        
-    <div class="article-wrapper u-cf">
+    <div class="article-wrapper u-cf single">
         
             <a class="bubble" href="https://www.datarchy.tech/article/20200814_spark_count_per_partition/">
     <i class="fas fa-fw fa-pencil-alt"></i>
@@ -286,14 +177,52 @@ val df = spark.read.option(&#34;header&#34;, &#34;true&#34;).csv(&#34;.../data/f
     </div>
 
     
-        Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways:
-  The first way is using Dataframe.mapPartitions().
-  The second way (the faster according to my observations) is using the spark_partition_id() function, followed by a grouping count aggregation.
-  Let&rsquo;s first load the data into a dataframe I have used the SF Bay Area Bike data source, that can be found here
+        <p>Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways:</p>
+<ul>
+<li>
+<p>The first way is using <code>Dataframe.mapPartitions()</code>.</p>
+</li>
+<li>
+<p>The second way (the faster according to my observations) is using the <code>spark_partition_id()</code> function, followed by a grouping count aggregation.</p>
+</li>
+</ul>
+<h2 id="lets-first-load-the-data-into-a-dataframe">Let&rsquo;s first load the data into a dataframe</h2>
+<p><em>I have used the SF Bay Area Bike data source, that can be found <a href="https://www.kaggle.com/benhamner/sf-bay-area-bike-share/data#"><strong>here</strong></a></em></p>
+<p>Scala :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df <span style="color:#66d9ef">=</span> spark<span style="color:#f92672">.</span>read<span style="color:#f92672">.</span>csv<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;file:///.../status.csv&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><h2 id="method-1---using-mappartitions">Method 1 - using mapPartitions()</h2>
+<p>Scala :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> countByPartition1 <span style="color:#66d9ef">=</span> 
+       df<span style="color:#f92672">.</span>mapPartitions<span style="color:#f92672">(</span>iter <span style="color:#66d9ef">=&gt;</span> <span style="color:#a6e22e">Array</span><span style="color:#f92672">(</span>iter<span style="color:#f92672">.</span>size<span style="color:#f92672">).</span>iterator<span style="color:#f92672">)</span>
+         <span style="color:#f92672">.</span>collect<span style="color:#f92672">()</span>
+</code></pre></div><ul>
+<li>
+<p><code>DataFrame.mapPartitions</code> : takes as parameter a lambda function that takes an iterator, and returns another iterator.</p>
+</li>
+<li>
+<p>It will create for each partition an iterator and will then pass it to the lambda function and finally will return a dataset that combines the results of the lambda function.</p>
+</li>
+<li>
+<p>Our lambda function is returning a single element iterator that contains the size of the input iterator (which is the number of rows in the partition).</p>
+</li>
+</ul>
+<p>The final result will be an array that contains the size of each partition, where the index of the array is the partition ID :</p>
+<pre><code>countByPartition1: Array[Int] = Array(4949155, 4863123, 4796844, 4910927, 4864103, 4848557, 4790660, 4985291, 4858505, 4853698, 4874157, 4814367, 4805210, 4790091, 3979746)
+</code></pre><h2 id="method-2---using-spark_partition_id">Method 2 - using spark_partition_id()</h2>
+<p>Scala :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> countByPartition2 <span style="color:#66d9ef">=</span> df<span style="color:#f92672">.</span>groupBy<span style="color:#f92672">(</span>spark_partition_id<span style="color:#f92672">())</span>
+                          <span style="color:#f92672">.</span>count<span style="color:#f92672">()</span>
+                          <span style="color:#f92672">.</span>collect<span style="color:#f92672">()</span> 
+</code></pre></div><ul>
+<li><code>spark_partition_id()</code> is a non deterministic function that returns a Column expression that generates for each row the ID of its corresponding partition.</li>
+<li>We group the dataframe by this column, and apply a count aggregation, which gives a new dataframe with two columns : Partition ID + Count of rows.</li>
+</ul>
+<pre><code>countByPartition2: Array[org.apache.spark.sql.Row] = Array([12,4805210], [1,4863123], [13,4790091], [6,4790660], [3,4910927], [5,4848557], [9,4853698], [4,4864103], [8,4858505], [7,4985291], [10,4874157], [11,4814367], [14,3979746], [2,4796844], [0,4949155])
+</code></pre><h2 id="conclusion">Conclusion</h2>
+<p>You can go either way to compute the number of rows per partition.
+However, I&rsquo;ve noticed that the second method can be up to 5 times faster than the first method.</p>
+<p>This can be useful to find and resolve performance issues related to data skewness.</p>
 
-        
-            <a href="https://www.datarchy.tech/article/20200814_spark_count_per_partition/" class="more">Continue reading</a>
-        
     
 </div>
 
@@ -328,44 +257,32 @@ val df = spark.read.option(&#34;header&#34;, &#34;true&#34;).csv(&#34;.../data/f
         
     </div>
 
-
     
-        
-    <div class="article-wrapper u-cf">
-        
-            <a class="bubble" href="https://www.datarchy.tech/quote/20200814_mark_twin_getting_started/">
-    <i class="fas fa-fw fa-quote-right"></i>
-</a>
-
-<article class="quote">
+        <div id="comments-container">
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
-
-    <blockquote>
-        <p>“The secret to getting ahead is getting started.”</p>
-
-        
-        <cite>
-            <a href="/author/mark-twain">
-                Mark Twain
-            </a>
-        </cite>
-    </blockquote>
-</article>
-
-        
-    </div>
-
-
     
-
     
-    <div class="paginator">
-        
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-www-datarchy-tech" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            
 
-        
-    </div>
-
-
+        </div>
+    
 
     </div>
 
@@ -459,8 +376,7 @@ val df = spark.read.option(&#34;header&#34;, &#34;true&#34;).csv(&#34;.../data/f
                 
                 by Datarchy
             </a>
-            -
-            <a href="https://www.datarchy.tech/index.xml">RSS</a>
+            
         </div>
         <div class="author">
             <a href="https://github.com/Lednerb/bilberry-hugo-theme"
