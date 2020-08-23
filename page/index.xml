@@ -11,7 +11,7 @@
     
     
     <item>
-      <title>Contact</title>
+      <title>About</title>
       <link>https://www.datarchy.tech/page/about/</link>
       <pubDate>Mon, 10 Aug 2020 13:18:45 +0100</pubDate>
       
@@ -22,6 +22,15 @@ I&amp;rsquo;ve created this blog to keep track and share every bit of knowledge 
 Please feel free to contact me at : wissem@datarchy.tech
 I would be more than happy to connect with you on linkedin : https://www.linkedin.com/in/wbelguidoum/
 See you soon!</description>
+    </item>
+    
+    <item>
+      <title>LinkedIn</title>
+      <link>https://www.datarchy.tech/page/linkedin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.datarchy.tech/page/linkedin/</guid>
+      <description></description>
     </item>
     
   </channel>
