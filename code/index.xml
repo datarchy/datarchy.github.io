@@ -21,5 +21,17 @@ For example, let this be our dataframe (taken from Spark: The Definitive Guide g
 val df = spark.read.option(&amp;#34;header&amp;#34;, &amp;#34;true&amp;#34;).csv(&amp;#34;.../data/flight-data/csv/*&amp;#34;) +-----------------+-------------------+-----+ |DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count| +-----------------+-------------------+-----+ | United States| Romania| 1| | United States| Ireland| 264| | United States| India| 69| | Egypt| United States| 24| |Equatorial Guinea| United States| 1| +-----------------+-------------------+-----+ only showing top 5 rows After adding a column containing the row number, the result should look like:</description>
     </item>
     
+    <item>
+      <title>Spark DataFrame - two ways to count the number of rows per partition</title>
+      <link>https://www.datarchy.tech/code/20200814_spark_count_per_partition/</link>
+      <pubDate>Sat, 15 Aug 2020 00:00:00 +0100</pubDate>
+      
+      <guid>https://www.datarchy.tech/code/20200814_spark_count_per_partition/</guid>
+      <description>Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways:
+  The first way is using Dataframe.mapPartitions().
+  The second way (the faster according to my observations) is using the spark_partition_id() function, followed by a grouping count aggregation.
+  Let&amp;rsquo;s first load the data into a dataframe I have used the SF Bay Area Bike data source, that can be found here</description>
+    </item>
+    
   </channel>
 </rss>

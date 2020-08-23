@@ -12,10 +12,10 @@
     
     <item>
       <title>Spark DataFrame - two ways to count the number of rows per partition</title>
-      <link>https://www.datarchy.tech/article/20200814_spark_count_per_partition/</link>
+      <link>https://www.datarchy.tech/code/20200814_spark_count_per_partition/</link>
       <pubDate>Sat, 15 Aug 2020 00:00:00 +0100</pubDate>
       
-      <guid>https://www.datarchy.tech/article/20200814_spark_count_per_partition/</guid>
+      <guid>https://www.datarchy.tech/code/20200814_spark_count_per_partition/</guid>
       <description>Sometimes, we are required to compute the number of rows per each partition. To do this, there are two ways:
   The first way is using Dataframe.mapPartitions().
   The second way (the faster according to my observations) is using the spark_partition_id() function, followed by a grouping count aggregation.
