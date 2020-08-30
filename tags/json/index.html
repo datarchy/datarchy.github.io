@@ -14,17 +14,17 @@
     <title>
         
            
-               Tags &vert; Data Programmers
+               Json &vert; Data Programmers
            
         
     </title>
-    <meta name="description" content="Tags - Wissem Belguidoum Data Engineer Datarchy">
-    <meta itemprop="name" content="Tags">
-    <meta itemprop="description" content="Tags - Wissem Belguidoum Data Engineer Datarchy">
-    <meta property="og:title" content="Tags">
-    <meta property="og:description" content="Tags - Wissem Belguidoum Data Engineer Datarchy">
+    <meta name="description" content="Json - Wissem Belguidoum Data Engineer Datarchy">
+    <meta itemprop="name" content="Json">
+    <meta itemprop="description" content="Json - Wissem Belguidoum Data Engineer Datarchy">
+    <meta property="og:title" content="Json">
+    <meta property="og:description" content="Json - Wissem Belguidoum Data Engineer Datarchy">
     <meta property="og:image" content="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?size=200">
-    <meta property="og:url" content="https://www.datarchy.tech/tags/">
+    <meta property="og:url" content="https://www.datarchy.tech/tags/json/">
     <meta property="og:site_name" content="Data Programmers"><meta property="og:type" content="website">
 
     
@@ -39,8 +39,8 @@
     <script src="/modernizr-simple.js"></script>
 
     
-    <link href="/tags/" rel="alternate" type="application/rss+xml" title="Data Programmers" />
-    <link href="/tags/" rel="feed" type="application/rss+xml" title="Data Programmers" />
+    <link href="/tags/json/" rel="alternate" type="application/rss+xml" title="Data Programmers" />
+    <link href="/tags/json/" rel="feed" type="application/rss+xml" title="Data Programmers" />
     
 
     
@@ -117,34 +117,126 @@
 
     <div class="main container">
         
+    
+    
+        <div class="article-wrapper u-cf">
+            
+                <a class="bubble" href="https://www.datarchy.tech/code/20200827_load_partitioned_json/">
+    <i class="fas fa-fw fa-code"></i>
+</a>
 
-<div class="content">
-    <div class="article-wrapper u-cf single">
-        <a class="bubble" href="/tags/">
-            <i class="fa fa-fw fa-tag"></i>
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://www.datarchy.tech/code/20200827_load_partitioned_json/">
+            <img src="/spark_with_json.png" alt="">
         </a>
-
-        <article class="article">
-            <div class="content">
-                <h3>Tags</h3>
-                <hr>
-                <ul id="all-categories">
-                    
-                        <li><a href="/tags/dataframe">dataframe (1)</a></li>
-                    
-                        <li><a href="/tags/json">json (1)</a></li>
-                    
-                        <li><a href="/tags/spark">spark (3)</a></li>
-                    
-                        <li><a href="/tags/spark-dataframe">spark-dataframe (2)</a></li>
-                    
-                        <li><a href="/tags/start-now">start-now (1)</a></li>
-                    
-                </ul>
-            </div>
-        </article>
     </div>
+
+
+    <div class="content">
+    <h1 class="article-title">
+        <a href="https://www.datarchy.tech/code/20200827_load_partitioned_json/">
+            How to optimise loading partitioned JSON data in Spark ?
+        </a>
+    </h1>
+
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-08-27</span>
+            
+        
+
+        
+            
+                <span class="readingTime">5 min read</span>
+            
+        
+
+        
+            <span class="categories">
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/categories/apache-spark/">Apache Spark</a>
+                    
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/categories/tutorial/">Tutorial</a>
+                    
+                
+            </span>
+        
+
+        
+            <span class="author">
+                
+                
+                    <a href="https://www.datarchy.tech/author/wissem-belguidoum/">Wissem Belguidoum</a>
+                
+            </span>
+        
+    </div>
+
+    
+        In this tutorial we will explore ways to optimise loading partitioned JSON data in Spark.
+I have used the SF Bay Area Bike Share dataset, you can find it here. The original data (status.csv) have gone through few transformations. The result looks like:
+Loading from partitioned JSON files  We will load the data filtered by station and month :
+val df1 = spark.read .json(&#34;file:///data/bike-data-big/partitioned_status.json&#34;) .filter(&#34;station_id = 10 and (month in (&#39;2013-08&#39;, &#39;2013-09&#39;))&#34;) Despite the fact that the code above does not contain any action yet, Spark starts three jobs that took few minutes to complete (on a local setting, with 8 cores and 32 Gigs or RAM):  Job 0 and Job 1 : Spark (and more specifically the Data Source API) is listing the content of the root folder and its subfolders, in order to discover the partitioning columns and map each column value to a file path.
+
+        
+            <a href="https://www.datarchy.tech/code/20200827_load_partitioned_json/" class="more">Continue reading</a>
+        
+    
 </div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/tags/spark/">Spark</a>
+                    
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/tags/spark-dataframe/">Spark DataFrame</a>
+                    
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/tags/json/">Json</a>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+            
+        </div>
+    
+
+    
+    <div class="paginator">
+        
+
+        
+    </div>
+
+
 
     </div>
 
@@ -228,7 +320,7 @@
                 by Datarchy
             </a>
             -
-            <a href="https://www.datarchy.tech/tags/index.xml">RSS</a>
+            <a href="https://www.datarchy.tech/tags/json/index.xml">RSS</a>
         </div>
         <div class="author">
             <a href="https://github.com/Lednerb/bilberry-hugo-theme"

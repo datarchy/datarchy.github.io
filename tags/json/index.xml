@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Spark DataFrame on Data Programmers</title>
-    <link>https://www.datarchy.tech/tags/spark-dataframe/</link>
-    <description>Recent content in Spark DataFrame on Data Programmers</description>
+    <title>Json on Data Programmers</title>
+    <link>https://www.datarchy.tech/tags/json/</link>
+    <description>Recent content in Json on Data Programmers</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 27 Aug 2020 00:00:00 +0100</lastBuildDate>
     
-	<atom:link href="https://www.datarchy.tech/tags/spark-dataframe/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.datarchy.tech/tags/json/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,17 +20,6 @@
 I have used the SF Bay Area Bike Share dataset, you can find it here. The original data (status.csv) have gone through few transformations. The result looks like:
 Loading from partitioned JSON files  We will load the data filtered by station and month :
 val df1 = spark.read .json(&amp;#34;file:///data/bike-data-big/partitioned_status.json&amp;#34;) .filter(&amp;#34;station_id = 10 and (month in (&amp;#39;2013-08&amp;#39;, &amp;#39;2013-09&amp;#39;))&amp;#34;) Despite the fact that the code above does not contain any action yet, Spark starts three jobs that took few minutes to complete (on a local setting, with 8 cores and 32 Gigs or RAM):  Job 0 and Job 1 : Spark (and more specifically the Data Source API) is listing the content of the root folder and its subfolders, in order to discover the partitioning columns and map each column value to a file path.</description>
-    </item>
-    
-    <item>
-      <title>How to add row numbers to a Spark DataFrame?</title>
-      <link>https://www.datarchy.tech/code/20200820_spark_rows_number/</link>
-      <pubDate>Thu, 20 Aug 2020 00:00:00 +0100</pubDate>
-      
-      <guid>https://www.datarchy.tech/code/20200820_spark_rows_number/</guid>
-      <description>In this tutorial, we will explore a couple of ways to add a sequential consecutive row number to a dataframe.
-For example, let this be our dataframe (taken from Spark: The Definitive Guide github repo):
-val df = spark.read.option(&amp;#34;header&amp;#34;, &amp;#34;true&amp;#34;).csv(&amp;#34;.../data/flight-data/csv/*&amp;#34;) +-----------------+-------------------+-----+ |DEST_COUNTRY_NAME|ORIGIN_COUNTRY_NAME|count| +-----------------+-------------------+-----+ | United States| Romania| 1| | United States| Ireland| 264| | United States| India| 69| | Egypt| United States| 24| |Equatorial Guinea| United States| 1| +-----------------+-------------------+-----+ only showing top 5 rows After adding a column containing the row number, the result should look like:</description>
     </item>
     
   </channel>

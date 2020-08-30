@@ -127,6 +127,118 @@
         
     <div class="article-wrapper u-cf">
         
+            <a class="bubble" href="https://www.datarchy.tech/code/20200827_load_partitioned_json/">
+    <i class="fas fa-fw fa-code"></i>
+</a>
+
+<article class="default article">
+    
+    <div class="featured-image">
+        <a href="https://www.datarchy.tech/code/20200827_load_partitioned_json/">
+            <img src="/spark_with_json.png" alt="">
+        </a>
+    </div>
+
+
+    <div class="content">
+    <h1 class="article-title">
+        <a href="https://www.datarchy.tech/code/20200827_load_partitioned_json/">
+            How to optimise loading partitioned JSON data in Spark ?
+        </a>
+    </h1>
+
+    <div class="meta">
+        
+            
+                <span class="date moment">2020-08-27</span>
+            
+        
+
+        
+            
+                <span class="readingTime">5 min read</span>
+            
+        
+
+        
+            <span class="categories">
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/categories/apache-spark/">Apache Spark</a>
+                    
+                
+                    
+                    
+                        <a href="https://www.datarchy.tech/categories/tutorial/">Tutorial</a>
+                    
+                
+            </span>
+        
+
+        
+            <span class="author">
+                
+                
+                    <a href="https://www.datarchy.tech/author/wissem-belguidoum/">Wissem Belguidoum</a>
+                
+            </span>
+        
+    </div>
+
+    
+        In this tutorial we will explore ways to optimise loading partitioned JSON data in Spark.
+I have used the SF Bay Area Bike Share dataset, you can find it here. The original data (status.csv) have gone through few transformations. The result looks like:
+Loading from partitioned JSON files  We will load the data filtered by station and month :
+val df1 = spark.read .json(&#34;file:///data/bike-data-big/partitioned_status.json&#34;) .filter(&#34;station_id = 10 and (month in (&#39;2013-08&#39;, &#39;2013-09&#39;))&#34;) Despite the fact that the code above does not contain any action yet, Spark starts three jobs that took few minutes to complete (on a local setting, with 8 cores and 32 Gigs or RAM):  Job 0 and Job 1 : Spark (and more specifically the Data Source API) is listing the content of the root folder and its subfolders, in order to discover the partitioning columns and map each column value to a file path.
+
+        
+            <a href="https://www.datarchy.tech/code/20200827_load_partitioned_json/" class="more">Continue reading</a>
+        
+    
+</div>
+
+    
+<div class="footer">
+
+
+    
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/tags/spark/">Spark</a>
+                    
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/tags/spark-dataframe/">Spark DataFrame</a>
+                    
+                
+                    
+                    
+                    <a href="https://www.datarchy.tech/tags/json/">Json</a>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+</article>
+
+        
+    </div>
+
+
+    
+        
+    <div class="article-wrapper u-cf">
+        
             <a class="bubble" href="https://www.datarchy.tech/code/20200820_spark_rows_number/">
     <i class="fas fa-fw fa-code"></i>
 </a>
@@ -387,6 +499,10 @@ val df = spark.read.option(&#34;header&#34;, &#34;true&#34;).csv(&#34;.../data/f
                 
                 
                     <li>
+                        <a href="https://www.datarchy.tech/code/20200827_load_partitioned_json/">How to optimise loading partitioned JSON data in Spark ?</a>
+                    </li>
+                
+                    <li>
                         <a href="https://www.datarchy.tech/code/20200820_spark_rows_number/">How to add row numbers to a Spark DataFrame?</a>
                     </li>
                 
@@ -405,12 +521,12 @@ val df = spark.read.option(&#34;header&#34;, &#34;true&#34;).csv(&#34;.../data/f
                 
                 <li>
                     <a href="/categories/apache-spark">Apache spark
-                        (2)</a>
+                        (3)</a>
                 </li>
                 
                 <li>
                     <a href="/categories/tutorial">Tutorial
-                        (2)</a>
+                        (3)</a>
                 </li>
                 
                 <li>
