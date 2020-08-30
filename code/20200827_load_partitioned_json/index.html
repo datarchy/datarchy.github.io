@@ -266,7 +266,7 @@ FileScan json default.sf_bike_status[bikes_available#0L,docks_available#1L,time#
 </code></pre><ul>
 <li>As you can see in the <code>InMemoryFileIndex</code>, reading the data via a table has enabled predicate pushdown. This leads to improvement in read performance.</li>
 </ul>
-<p>Even when reading from a table, partition discovery is still there. But, since we have predicate pushdown enabled, the partition discovery is limited to the scope of the data covered by the filter.</p>
+<p>It is worth saying that even when reading from a table, partition discovery is still there. But, since we have predicate pushdown enabled, the partition discovery is limited to the scope of the paths covered by the filter. In our case, the partition discovery did not trigger Spark jobs, because the number of paths (25) is below the parallel discovery threshold (32), as discussed in the first section.</p>
 <h3 id="conclusion">Conclusion</h3>
 <hr>
 <p>Reading partitioned JSON files (or even CSV partitioned files with <code>inferSchema=true</code>) can take a significant amount of time, in which Spark does two things: partition discovery and schema inference.</p>
