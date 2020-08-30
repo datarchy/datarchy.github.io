@@ -182,7 +182,7 @@
     
         <p>In this tutorial we will explore ways to optimise loading partitioned JSON data in Spark.</p>
 <p>I have used the SF Bay Area Bike Share dataset, you can find it <a href="https://www.kaggle.com/benhamner/sf-bay-area-bike-share/data#"><strong>here</strong></a>. The original data (<em>status.csv</em>) have gone through few transformations. The result looks like:</p>
-<p><img src="tree.png" alt="Partioned JSON data"></p>
+<p><img src="tree.png" alt="Partitioned JSON data"></p>
 <h2 id="loading-from-partitioned-json-files">Loading from partitioned JSON files</h2>
 <hr>
 <p>We will load the data filtered by station and month :</p>
@@ -206,7 +206,7 @@ FileScan json [bikes_available#7L,docks_available#8L,time#9,station_id#10,month#
 <ul>
 <li><strong>Issue 1</strong> : Spark will run partition discovery jobs each time we load the data (depends on the number of folders).</li>
 <li><strong>Issue 2</strong> : Also, Spark will launch a job that will scan the whole dataset in order to infer the schema.</li>
-<li><strong>Issue 3</strong> : Partition pruning through predicate pushdown is disabled, despite the fact that Spark has collected all the meta-data needed.</li>
+<li><strong>Issue 3</strong> : Predicate pushdown is disabled, although Spark has collected all the meta-data needed.</li>
 </ul>
 <p>In the next section, we&rsquo;ll try to cover some solutions to these issues.</p>
 <h2 id="solution-1--using-basepath">Solution 1 : Using <code>basePath</code></h2>
