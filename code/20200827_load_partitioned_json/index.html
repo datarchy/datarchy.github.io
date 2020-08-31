@@ -189,7 +189,7 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> df1 <span style="color:#66d9ef">=</span> spark<span style="color:#f92672">.</span>read
 	<span style="color:#f92672">.</span>json<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;file:///data/bike-data-big/partitioned_status.json&#34;</span><span style="color:#f92672">)</span>
 	<span style="color:#f92672">.</span>filter<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;station_id = 10 and (month in (&#39;2013-08&#39;, &#39;2013-09&#39;))&#34;</span><span style="color:#f92672">)</span>
-</code></pre></div><p>Despite the fact that the code above does not contain any action yet, Spark starts three jobs that took few minutes to complete (on a local setting, with 8 cores and 32 Gigs or RAM):
+</code></pre></div><p>Despite the fact that the code above does not contain any action yet, Spark starts three jobs that took few minutes to complete (on a local setting, with 8 cores and 32 Gigs of RAM):
 <img src="slow_json_loading.png" alt="Slow JSON Loading"></p>
 <ul>
 <li>Job 0 and Job 1 : Spark (and more specifically the Data Source API) is listing the content of the root folder and its subfolders, in order to discover the partitioning columns and map each column value to a path. The result of this job is an <code>InMemoryFileIndex</code> object that will be used later to access the data.</li>
